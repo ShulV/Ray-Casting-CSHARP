@@ -23,13 +23,13 @@ namespace RayCastingCSHARP
                 "WWWWWWWWWWWW" };
         public Map()
         {
-            //fillPointsSet();
+           
         }
         public void addSettings(Settings settings)
         {
             this.settings = settings;
         }
-        /*
+        
         public void fillPointsSet()
         {
             countPoints = 0;
@@ -45,6 +45,6 @@ namespace RayCastingCSHARP
                 }
             }
         }
-        */
+        
     }
 }
