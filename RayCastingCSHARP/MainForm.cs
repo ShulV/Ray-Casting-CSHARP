@@ -24,7 +24,7 @@ namespace RayCastingCSHARP
             GameForm gameForm = new GameForm();
             gameForm.Show();
             this.Hide();
-            
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
