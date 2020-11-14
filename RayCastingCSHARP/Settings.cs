@@ -42,7 +42,7 @@ namespace RayCastingCSHARP
         green_pen = new Pen(Color.Green, 1);// ручка зеленый 1
         black_pen = new Pen(Color.Black, 1);// ручка черный 1
         blue_brush = Brushes.Blue;// кисть синяя
-    }
+        }
     }
     
 }

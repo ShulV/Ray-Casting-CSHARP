@@ -12,7 +12,7 @@ namespace RayCastingCSHARP
 {
     public partial class GameForm : Form
     {
-        Settings settings;
+        Settings settings = new Settings();
         public GameForm()
         {
             InitializeComponent();
@@ -23,9 +23,14 @@ namespace RayCastingCSHARP
 
         private void GameForm_Load(object sender, EventArgs e)
         {
-        settings = new Settings();
         settings.InitSettings(minimap_2D_panel);
         label1.Text = settings.HEIGHT_BLOCKS.ToString();
+        }
+
+        public void CreatePlayer()
+        {
+            Player player = new Player((int)settings.MINIMAP_WIDTH/2, (int)settings.MINIMAP_HEIGHT/2, 0);
+
         }
     }
 }
