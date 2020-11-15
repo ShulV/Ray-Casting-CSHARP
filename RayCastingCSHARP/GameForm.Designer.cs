@@ -36,6 +36,7 @@
             // map_3D_panel
             // 
             this.map_3D_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.map_3D_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.map_3D_panel.Location = new System.Drawing.Point(330, 50);
             this.map_3D_panel.Name = "map_3D_panel";
             this.map_3D_panel.Size = new System.Drawing.Size(900, 600);
@@ -43,6 +44,7 @@
             // 
             // minimap_2D_panel
             // 
+            this.minimap_2D_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.minimap_2D_panel.Location = new System.Drawing.Point(1, 50);
             this.minimap_2D_panel.Name = "minimap_2D_panel";
             this.minimap_2D_panel.Size = new System.Drawing.Size(300, 200);
@@ -70,6 +72,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "GameForm";
             this.Load += new System.EventHandler(this.GameForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

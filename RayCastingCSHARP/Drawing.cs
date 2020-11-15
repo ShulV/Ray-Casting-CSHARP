@@ -16,16 +16,28 @@ namespace RayCastingCSHARP
         {
             this.settings = settings;
         }
-        private void Draw2DPlayer(PaintEventArgs e, Player player)
+        public void drawing_2D_map(Map map, Graphics graphics)
         {
+            for (int i = 0; i < map.countPoints; i++)
+            {
+                Rectangle rect = new Rectangle(map.pointsSet[i].X, map.pointsSet[i].Y, settings.MINIMAP_TILE, map.settings.MINIMAP_TILE);
+                graphics.DrawRectangle(settings.green_pen, rect);
+                graphics.FillRectangle(settings.blue_brush, rect);
+            }
+        }
+        public void Draw2DPlayer(PaintEventArgs e, Player player)
+        {
+            /*
+              int width;
+            int height;
             //Circle
-            Graphics gr = e.Graphics;
-            Point playerPos = new Point((int)player.x, (int)player.y);
-           
-           
+            Graphics gr = e.Graphics;          
+            width = height = settings.PLAYER_DIAMETR_2D;
+            gr.DrawEllipse(settings.green_pen, (int)player.x, (int)player.y, width, height);
+             */
 
         }
-        
+
         /*
         public void drawPointingLine(Graphics gr)
         {
