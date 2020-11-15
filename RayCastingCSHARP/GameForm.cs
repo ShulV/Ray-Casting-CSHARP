@@ -15,6 +15,7 @@ namespace RayCastingCSHARP
 
         Settings settings;
         Map map;
+        Drawing draw;
         public GameForm()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace RayCastingCSHARP
             map = new Map();
             map.addSettings(settings);
             map.fillPointsSet();
+            draw = new Drawing(settings);
             label1.Text = map.countPoints.ToString();
         }
 
@@ -37,6 +39,11 @@ namespace RayCastingCSHARP
         {
             Player player = new Player((int)settings.MINIMAP_WIDTH/2, (int)settings.MINIMAP_HEIGHT/2, 0);
 
+        }
+
+        private void minimap_2D_panel_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }

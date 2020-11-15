@@ -47,6 +47,7 @@
             this.minimap_2D_panel.Name = "minimap_2D_panel";
             this.minimap_2D_panel.Size = new System.Drawing.Size(300, 200);
             this.minimap_2D_panel.TabIndex = 1;
+            this.minimap_2D_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.minimap_2D_panel_Paint);
             // 
             // label1
             // 
