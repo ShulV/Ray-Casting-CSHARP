@@ -18,21 +18,43 @@ namespace RayCastingCSHARP
         Drawing draw;
         Player player;
         PictureBox PB_player;
+        Point playerPos;
+        Graphics panel_graphics;
+
         public GameForm()
         {
             InitializeComponent();
             Invalidate(); //перерисовка формы
+
         }
 
         private void GameForm_Load(object sender, EventArgs e)
         {
+            //настройки
             settings = new Settings();
             settings.InitSettings(minimap_2D_panel);
-            PB_player = new PictureBox();
+            //создание рисовалки
+            draw = new Drawing(settings);
+            //карта 2D
             minimap = new Map(settings);
             minimap.fillPointsSet();
+            //создание игрока
             CreatePlayer();
-            draw = new Drawing(settings);
+            playerPos = new Point((int)player.x, (int)player.y);
+            //картинка 2D
+            PB_player = new PictureBox();
+            PB_player.Width = settings.PLAYER_DIAMETR_2D;
+            PB_player.Height = settings.PLAYER_DIAMETR_2D;
+            PB_player.Image = Properties.Resources.smile;
+            PB_player.SizeMode = PictureBoxSizeMode.Zoom;
+            PB_player.BackColor = Color.Transparent;
+            PB_player.Location = playerPos;
+            minimap_2D_panel.Controls.Add(PB_player);
+
+            panel_graphics = minimap_2D_panel.CreateGraphics();
+           
+
+
         }
 
         public void CreatePlayer()
@@ -41,39 +63,16 @@ namespace RayCastingCSHARP
         }
 
        public void minimap_2D_panel_Paint(object sender, PaintEventArgs e)
+        { 
+
+        }
+        public void minimap_2D_panel_refresh(Graphics gr)
         {
-            draw.Draw2DPlayer(e, player);
-            Graphics gr = e.Graphics;
+            draw.drawing_2D_map(minimap, gr);
             //LINE
-            int x1 = (int)(player.x + settings.PLAYER_RADIUS_2D);
-            int y1 = (int)(player.y + settings.PLAYER_RADIUS_2D);
-            Point p1 = new Point(x1, y1);// первая точка
-            int Xp = (int)(player.x + settings.PLAYER_RADIUS_2D + settings.LINE_WIDTH * Math.Cos((double)(player.angle * Math.PI / 180.0)));
-            int Yp = (int)(player.y + settings.PLAYER_RADIUS_2D + settings.LINE_WIDTH * Math.Sin((double)(player.angle * Math.PI / 180.0)));
-            Point p2 = new Point(Xp, Yp);// вторая точка
-            gr.DrawLine(settings.green_pen, p1, p2);// рисуем линию
-            label1.Text = p2.X.ToString();
+            draw.drawing_2D_line(player, gr);
             //PictureBox
-           
-            PB_player.Location = p1;
-            PB_player.Width = settings.PLAYER_DIAMETR_2D;
-            PB_player.Height = settings.PLAYER_DIAMETR_2D;
-            PB_player.Image = Properties.Resources.smile;
-            PB_player.SizeMode = PictureBoxSizeMode.Zoom;
-            
-
-            minimap_2D_panel.Controls.Add(PB_player);
-            /**/
-            /*
-              int width;
-            int height;
-
-            //Circle
-            Graphics gr = e.Graphics;
-            width = height = settings.PLAYER_DIAMETR_2D;
-            gr.DrawEllipse(settings.green_pen, (int)player.x, (int)player.y, width, height);
-             */
-
+            label1.Text = settings.LINE_WIDTH.ToString();
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
@@ -91,15 +90,25 @@ namespace RayCastingCSHARP
             {
                 player.angle += settings.ROTATE_ANGLE;
             }
-            Point playerPos = new Point((int)player.x, (int)player.y);
+            playerPos.X = (int)player.x;
+            playerPos.Y = (int)player.y;
             PB_player.Location = playerPos;
-            //Invalidate();//перерисовка
+
+            label1.Text = player.angle.ToString();
+
+            minimap_2D_panel_refresh(panel_graphics);
+            Invalidate();//перерисовка
             
         }
 
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void GameForm_Shown(object sender, EventArgs e)
+        {
+            minimap_2D_panel_refresh(panel_graphics);
         }
     }
 }

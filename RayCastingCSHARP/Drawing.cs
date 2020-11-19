@@ -25,16 +25,16 @@ namespace RayCastingCSHARP
                 graphics.FillRectangle(settings.blue_brush, rect);
             }
         }
-        public void Draw2DPlayer(PaintEventArgs e, Player player)
+        public void drawing_2D_line(Player player, Graphics gr)
         {
-            /*
-              int width;
-            int height;
-            //Circle
-            Graphics gr = e.Graphics;          
-            width = height = settings.PLAYER_DIAMETR_2D;
-            gr.DrawEllipse(settings.green_pen, (int)player.x, (int)player.y, width, height);
-             */
+            float x1 = (player.x + settings.PLAYER_RADIUS_2D);
+            float y1 = (player.y + settings.PLAYER_RADIUS_2D);
+            PointF p1 = new PointF(x1, y1);// первая точка
+            float Xp = (float)(player.x + settings.PLAYER_RADIUS_2D + settings.LINE_WIDTH * Math.Cos((double)(player.angle * Math.PI / 180.0)));
+            float Yp = (float)(player.y + settings.PLAYER_RADIUS_2D + settings.LINE_WIDTH * Math.Sin((double)(player.angle * Math.PI / 180.0)));
+
+            PointF p2 = new PointF(Xp, Yp);// вторая точка
+            gr.DrawLine(settings.green_pen, p1, p2);// рисуем линию          
 
         }
 
