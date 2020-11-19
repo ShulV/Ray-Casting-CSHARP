@@ -93,8 +93,13 @@ namespace RayCastingCSHARP
             }
             Point playerPos = new Point((int)player.x, (int)player.y);
             PB_player.Location = playerPos;
-            Invalidate();//перерисовка
+            //Invalidate();//перерисовка
             
+        }
+
+        private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

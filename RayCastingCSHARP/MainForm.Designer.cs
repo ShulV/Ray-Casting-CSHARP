@@ -33,9 +33,10 @@
             // 
             // btn_play
             // 
-            this.btn_play.Location = new System.Drawing.Point(328, 147);
+            this.btn_play.Location = new System.Drawing.Point(246, 119);
+            this.btn_play.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_play.Name = "btn_play";
-            this.btn_play.Size = new System.Drawing.Size(174, 61);
+            this.btn_play.Size = new System.Drawing.Size(130, 50);
             this.btn_play.TabIndex = 0;
             this.btn_play.Text = "Играть";
             this.btn_play.UseVisualStyleBackColor = true;
@@ -43,12 +44,14 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.btn_play);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
