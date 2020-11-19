@@ -68,10 +68,10 @@ namespace RayCastingCSHARP
         }
         public void minimap_2D_panel_refresh(Graphics gr)
         {
+            draw.drawing_2D_background(gr, minimap_2D_panel);
             draw.drawing_2D_map(minimap, gr);
-            //LINE
             draw.drawing_2D_line(player, gr);
-            //PictureBox
+            
             label1.Text = settings.LINE_WIDTH.ToString();
         }
 

@@ -27,6 +27,7 @@ namespace RayCastingCSHARP
         }
         public void drawing_2D_line(Player player, Graphics gr)
         {
+            
             float x1 = (player.x + settings.PLAYER_RADIUS_2D);
             float y1 = (player.y + settings.PLAYER_RADIUS_2D);
             PointF p1 = new PointF(x1, y1);// первая точка
@@ -34,24 +35,28 @@ namespace RayCastingCSHARP
             float Yp = (float)(player.y + settings.PLAYER_RADIUS_2D + settings.LINE_WIDTH * Math.Sin((double)(player.angle * Math.PI / 180.0)));
 
             PointF p2 = new PointF(Xp, Yp);// вторая точка
-            gr.DrawLine(settings.green_pen, p1, p2);// рисуем линию          
+            gr.DrawLine(settings.green_pen, p1, p2);// рисуем линию       
+            
 
         }
-
-        /*
-        public void drawPointingLine(Graphics gr)
+        public void drawing_2D_background(Graphics gr, Panel panel)
         {
-            //Line
-
-            draw.drawing_2D_map(map_2D, gr, black_pen, blue_brush);
-            PointF p1 = new PointF(player.x + PLAYER_RADIUS_2D, (int)(player.y + PLAYER_RADIUS_2D));// первая точка
-            float Xp = (float)(player.x + PLAYER_RADIUS_2D + LINE_WIDTH * Math.Cos((double)(player.angle * Math.PI / 180.0)));
-            float Yp = (float)(player.y + PLAYER_RADIUS_2D + LINE_WIDTH * Math.Sin((double)(player.angle * Math.PI / 180.0)));
-
-            PointF p2 = new PointF(Xp, Yp);// вторая точка
-            gr.DrawLine(green_pen, p1, p2);// рисуем линию
-            gr.Dispose();// освобождаем все ресурсы, связанные с отрисовкой
+            gr.FillRectangle(Brushes.White, 0, 0, panel.Width, panel.Height);
         }
-        */
-    }
+            /*
+            public void drawPointingLine(Graphics gr)
+            {
+                //Line
+
+                draw.drawing_2D_map(map_2D, gr, black_pen, blue_brush);
+                PointF p1 = new PointF(player.x + PLAYER_RADIUS_2D, (int)(player.y + PLAYER_RADIUS_2D));// первая точка
+                float Xp = (float)(player.x + PLAYER_RADIUS_2D + LINE_WIDTH * Math.Cos((double)(player.angle * Math.PI / 180.0)));
+                float Yp = (float)(player.y + PLAYER_RADIUS_2D + LINE_WIDTH * Math.Sin((double)(player.angle * Math.PI / 180.0)));
+
+                PointF p2 = new PointF(Xp, Yp);// вторая точка
+                gr.DrawLine(green_pen, p1, p2);// рисуем линию
+                gr.Dispose();// освобождаем все ресурсы, связанные с отрисовкой
+            }
+            */
+        }
 }

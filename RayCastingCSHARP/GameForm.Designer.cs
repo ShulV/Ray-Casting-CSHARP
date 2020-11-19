@@ -47,7 +47,7 @@
             // 
             this.minimap_2D_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.minimap_2D_panel.Location = new System.Drawing.Point(1, 40);
-            this.minimap_2D_panel.Margin = new System.Windows.Forms.Padding(2);
+            this.minimap_2D_panel.Margin = new System.Windows.Forms.Padding(0);
             this.minimap_2D_panel.Name = "minimap_2D_panel";
             this.minimap_2D_panel.Size = new System.Drawing.Size(240, 160);
             this.minimap_2D_panel.TabIndex = 1;
