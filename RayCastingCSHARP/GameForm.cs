@@ -43,8 +43,8 @@ namespace RayCastingCSHARP
             playerPos = new Point((int)player.x, (int)player.y);
             //картинка 2D
             PB_player = new PictureBox();
-            PB_player.Width = settings.PLAYER_DIAMETR_2D;
-            PB_player.Height = settings.PLAYER_DIAMETR_2D;
+            PB_player.Width = Settings.PLAYER_DIAMETR_2D;
+            PB_player.Height = Settings.PLAYER_DIAMETR_2D;
             PB_player.Image = Properties.Resources.smile;
             PB_player.SizeMode = PictureBoxSizeMode.Zoom;
             PB_player.BackColor = Color.Transparent;
@@ -59,7 +59,7 @@ namespace RayCastingCSHARP
 
         public void CreatePlayer()
         {
-            player = new Player((int)settings.MINIMAP_WIDTH/2, (int)settings.MINIMAP_HEIGHT/2, 0);
+            player = new Player((int)Settings.MINIMAP_WIDTH/2, (int)Settings.MINIMAP_HEIGHT/2, 0);
         }
 
        public void minimap_2D_panel_Paint(object sender, PaintEventArgs e)
@@ -71,24 +71,26 @@ namespace RayCastingCSHARP
             draw.drawing_2D_background(gr, minimap_2D_panel);
             draw.drawing_2D_map(minimap, gr);
             draw.drawing_2D_line(player, gr);
+            draw.ray_casting(gr, player);
+
             
-            label1.Text = settings.LINE_WIDTH.ToString();
+            label1.Text = Settings.LINE_WIDTH.ToString();
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.W)
             {
-                player.x += (float)(settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
-                player.y += (float)(settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
+                player.x += (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
+                player.y += (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
             }
             if (e.KeyCode == Keys.Left)
             {
-                player.angle -= settings.ROTATE_ANGLE;
+                player.angle -= Settings.ROTATE_ANGLE;
             }
             if (e.KeyCode == Keys.Right)
             {
-                player.angle += settings.ROTATE_ANGLE;
+                player.angle += Settings.ROTATE_ANGLE;
             }
             playerPos.X = (int)player.x;
             playerPos.Y = (int)player.y;

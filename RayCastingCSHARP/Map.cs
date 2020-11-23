@@ -10,7 +10,7 @@ namespace RayCastingCSHARP
     class Map
     {
         public Settings settings;
-        public Point[] pointsSet = new Point[12 * 8];
+        static public Point[] pointsSet = new Point[12 * 8];
         public int countPoints;
         public String[] worldMap = {
                 "WWWWWWWWWWWW",
@@ -29,14 +29,14 @@ namespace RayCastingCSHARP
         public void fillPointsSet()
         {
             countPoints = 0;
-            for (int n = 0; n < settings.HEIGHT_BLOCKS; n++)
+            for (int n = 0; n < Settings.HEIGHT_BLOCKS; n++)
             {
                 String row = this.worldMap[n];
-                for (int m = 0; m < settings.WIDTH_BLOCKS; m++)
+                for (int m = 0; m < Settings.WIDTH_BLOCKS; m++)
                 {
                     if (row[m] == 'W')
                     {
-                        pointsSet[countPoints++] = new Point(m * settings.MINIMAP_TILE, n * settings.MINIMAP_TILE);
+                        pointsSet[countPoints++] = new Point(m * Settings.MINIMAP_TILE, n * Settings.MINIMAP_TILE);
                     }
                 }
             }
