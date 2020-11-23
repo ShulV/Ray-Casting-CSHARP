@@ -8,10 +8,10 @@ namespace RayCastingCSHARP
 {
     class Player
     {
-        public float x;
-        public float y;
-        public float angle;
-        public Player(float x, float y, float angle)
+        public double x;
+        public double y;
+        public double angle;
+        public Player(double x, double y, double angle)
         {
             this.x = x;
             this.y = y;
