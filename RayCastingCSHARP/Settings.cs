@@ -48,10 +48,10 @@ namespace RayCastingCSHARP
         LINE_WIDTH = MINIMAP_WIDTH; //длина линии-указателя игрока на 2D карте
         PB_Player = new PictureBox(); //картинка игрока на миникарте (2D)
         //RAY CASTING
-        FOV = Math.PI / 3;//угол обзора
+        FOV = 60;//угол обзора в градусах
         HALF_FOV = FOV / 2; //половина угла обзора
-        NUM_RAYS = 30; //кол-во лучей
-        MAX_DEPTH = 50;//MINIMAP_HEIGHT; //дальность прорисовки
+        NUM_RAYS = 10;//120 //кол-во лучей
+        MAX_DEPTH = 40;//MINIMAP_HEIGHT; //дальность прорисовки
         DELTA_ANGLE = FOV / NUM_RAYS; //угол между лучами
 
 

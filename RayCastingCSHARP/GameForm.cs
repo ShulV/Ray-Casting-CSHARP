@@ -72,9 +72,6 @@ namespace RayCastingCSHARP
             draw.drawing_2D_map(minimap, gr);
             draw.drawing_2D_line(player, gr);
             draw.ray_casting(gr, player);
-
-            
-            label1.Text = Settings.LINE_WIDTH.ToString();
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
@@ -96,7 +93,9 @@ namespace RayCastingCSHARP
             playerPos.Y = (int)player.y;
             PB_player.Location = playerPos;
 
-            label1.Text = player.angle.ToString();
+            double cur_angle = player.angle - Settings.HALF_FOV;
+            double sin_a = Math.Sin(cur_angle * Math.PI / 180.0);
+            label1.Text = "sin_a" + sin_a.ToString();
 
             minimap_2D_panel_refresh(panel_graphics);
             Invalidate();//перерисовка
