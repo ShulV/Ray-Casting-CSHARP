@@ -17,7 +17,6 @@ namespace RayCastingCSHARP
         Map minimap;
         Drawing draw;
         Player player;
-        PictureBox PB_player;
         Point playerPos;
         Graphics panel_graphics;
 
@@ -41,18 +40,6 @@ namespace RayCastingCSHARP
             //создание игрока
             CreatePlayer();
             playerPos = new Point((int)player.x, (int)player.y);
-            //картинка 2D
-            /*
-             PB_player = new PictureBox();
-            PB_player.Width = Settings.PLAYER_DIAMETR_2D;
-            PB_player.Height = Settings.PLAYER_DIAMETR_2D;
-            PB_player.Image = Properties.Resources.smile;
-            PB_player.SizeMode = PictureBoxSizeMode.Zoom;
-            PB_player.BackColor = Color.Transparent;
-            PB_player.Location = playerPos;
-            minimap_2D_panel.Controls.Add(PB_player);
-             */
-
             //панель для миникарты
             minimap_2D_panel.Location = new Point(0, 0);
             minimap_2D_panel.Size = new Size(Settings.WIDTH, Settings.HEIGHT);
@@ -78,7 +65,7 @@ namespace RayCastingCSHARP
         {
             draw.drawing_2D_background(gr, minimap_2D_panel);
             draw.drawing_2D_map(minimap, gr);
-            draw.drawing_2D_line(player, gr);
+            draw.drawing_2D_ray(player, gr);
             draw.ray_casting(gr, player, label1);
         }
 
@@ -99,10 +86,8 @@ namespace RayCastingCSHARP
             }
             playerPos.X = (int)player.x;
             playerPos.Y = (int)player.y;
-            //PB_player.Location = playerPos;
 
             double cur_angle = player.angle - Settings.HALF_FOV;
-            //double sin_a = Math.Sin(cur_angle * Math.PI / 180.0);
             
 
             minimap_2D_panel_refresh(panel_graphics);

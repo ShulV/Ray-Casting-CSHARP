@@ -14,8 +14,6 @@ namespace RayCastingCSHARP
         static public int WIDTH; //ширина панели миникарты
         static public int HEIGHT; //высота панели миникарты
         static public float ROTATE_ANGLE; //угол одного поворота
-        //static public int PLAYER_RADIUS_2D; //радиус круга игрока на 2D карте
-        //static public int PLAYER_DIAMETR_2D; //диаметр круга игрока на 2D карте
         static public int LINE_WIDTH; //длина линии-указателя игрока на 2D карте
         static public int PLAYER_SPEED; //скорость передвижения
         static public int MINIMAP_WIDTH; // ширина миникарты
@@ -41,8 +39,6 @@ namespace RayCastingCSHARP
         WIDTH = 1200; //ширина панели миникарты
         HEIGHT = 800; //высота панели миникарты
         ROTATE_ANGLE = 5; //угол одного поворота
-        //PLAYER_RADIUS_2D = 10; //радиус круга игрока на 2D карте
-        //PLAYER_DIAMETR_2D = PLAYER_RADIUS_2D * 2; //диаметр круга игрока на 2D карте
         PLAYER_SPEED = 20; //скорость передвижения
         MINIMAP_WIDTH = minimap_panel.Size.Width; // ширина миникарты
         MINIMAP_HEIGHT = minimap_panel.Size.Height; ; //высота миникарты

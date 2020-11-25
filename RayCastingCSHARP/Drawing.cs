@@ -28,18 +28,21 @@ namespace RayCastingCSHARP
                 graphics.DrawRectangle(Pens.Aqua, rectCenter);
             }
         }
-        public void drawing_2D_line(Player player, Graphics gr)
+        public void drawing_2D_ray(Player player, Graphics gr)
         {
             
-            double x1 = (player.x/* + Settings.PLAYER_RADIUS_2D*/);
-            double y1 = (player.y/* + Settings.PLAYER_RADIUS_2D*/);
+            float x1 = (float)(player.x);
+            float y1 = (float)(player.y);
             PointF p1 = new PointF((float)x1, (float)y1);// первая точка
-            float Xp = (float)(player.x/* + Settings.PLAYER_RADIUS_2D*/ + Settings.LINE_WIDTH * Math.Cos((double)(player.angle * Math.PI / 180.0)));
-            float Yp = (float)(player.y/* + Settings.PLAYER_RADIUS_2D*/ + Settings.LINE_WIDTH * Math.Sin((double)(player.angle * Math.PI / 180.0)));
+            float Xp = (float)(player.x + Settings.LINE_WIDTH * Math.Cos((double)(player.angle * Math.PI / 180.0)));
+            float Yp = (float)(player.y + Settings.LINE_WIDTH * Math.Sin((double)(player.angle * Math.PI / 180.0)));
 
             PointF p2 = new PointF(Xp, Yp);// вторая точка
-            gr.DrawLine(Settings.green_pen, p1, p2);// рисуем линию       
-            
+            gr.DrawLine(Settings.green_pen, p1, p2);// рисуем линию  
+            float half_side = 6f;
+            RectangleF rect = new RectangleF(x1 - half_side, y1 - half_side, half_side * 2, half_side * 2);
+            gr.DrawEllipse(Pens.Lime, rect);
+            gr.FillEllipse(Brushes.Lime, rect);
 
         }
         public void drawing_2D_background(Graphics gr, Panel panel)
@@ -49,7 +52,7 @@ namespace RayCastingCSHARP
         public void ray_casting(Graphics gr, Player player, Label label)
         {
             double cur_angle = player.angle - Settings.HALF_FOV;
-            PointF start_point = new PointF((float)player.x /* + Settings.PLAYER_RADIUS_2D*/, (float)player.y /* + Settings.PLAYER_RADIUS_2D*/);
+            PointF start_point = new PointF((float)player.x, (float)player.y);
             
             for (int ray=0; ray < Settings.NUM_RAYS; ray++)
             {
@@ -62,9 +65,7 @@ namespace RayCastingCSHARP
                     Point end_point_int = new Point((int)(end_x / Settings.MINIMAP_TILE) * Settings.MINIMAP_TILE, (int)(end_y / Settings.MINIMAP_TILE) * Settings.MINIMAP_TILE);
                     end_point_int.X += Settings.MINIMAP_TILE / 2;
                     end_point_int.Y += Settings.MINIMAP_TILE / 2;
-                    //end_x += Settings.PLAYER_RADIUS_2D;
-                    //end_y += Settings.PLAYER_RADIUS_2D;
-                    gr.DrawLine(Settings.green_pen, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
+                    gr.DrawLine(Pens.Red, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
                     
                     
                     label.Text = "Точка = " + end_point_int.ToString();
