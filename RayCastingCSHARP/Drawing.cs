@@ -49,10 +49,10 @@ namespace RayCastingCSHARP
         {
             gr.FillRectangle(Brushes.White, 0, 0, panel.Width, panel.Height);
         }
-        public void ray_casting(Graphics gr, Player player, Label label)
+        public void ray_casting(Graphics gr, Player player)
         {
-            double cur_angle = player.angle - Settings.HALF_FOV;
             PointF start_point = new PointF((float)player.x, (float)player.y);
+            double cur_angle = player.angle - Settings.HALF_FOV;
             
             for (int ray=0; ray < Settings.NUM_RAYS; ray++)
             {
@@ -62,17 +62,23 @@ namespace RayCastingCSHARP
                 {
                     float end_x = (float)(player.x + depth * cos_a);
                     float end_y = (float)(player.y + depth * sin_a);
+                    PointF end_point = new PointF(end_x, end_y);
                     Point end_point_int = new Point((int)(end_x / Settings.MINIMAP_TILE) * Settings.MINIMAP_TILE, (int)(end_y / Settings.MINIMAP_TILE) * Settings.MINIMAP_TILE);
                     end_point_int.X += Settings.MINIMAP_TILE / 2;
                     end_point_int.Y += Settings.MINIMAP_TILE / 2;
                     gr.DrawLine(Pens.Red, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
+
+                    if (ray != 0) {
+                        if ((int)(Settings.NUM_RAYS / ray) == ray)
+                        {
+                            player.distance_to_wall = MathHelper.vectorLength(start_point, end_point);
+                        }
+                    }
                     
-                    
-                    label.Text = "Точка = " + end_point_int.ToString();
+
                     
                         if (Map.pointsCenterSet.Contains(end_point_int))
                         {
-
                             break;
                         }
                     

@@ -66,15 +66,19 @@ namespace RayCastingCSHARP
             draw.drawing_2D_background(gr, minimap_2D_panel);
             draw.drawing_2D_map(minimap, gr);
             draw.drawing_2D_ray(player, gr);
-            draw.ray_casting(gr, player, label1);
+            draw.ray_casting(gr, player);
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.W)
             {
-                player.x += (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
-                player.y += (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
+                label1.Text = Math.Ceiling(player.distance_to_wall).ToString() + "   ___     " + Settings.PLAYER_SPEED;
+                if (Math.Ceiling(player.distance_to_wall) > Settings.PLAYER_SPEED) {
+                    player.x += (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
+                    player.y += (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
+                }
+                
             }
             if (e.KeyCode == Keys.Left)
             {
