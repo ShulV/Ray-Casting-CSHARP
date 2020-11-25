@@ -11,9 +11,11 @@ namespace RayCastingCSHARP
     public class Settings
     {
         //-------------------------------2D-------------------------------------
+        static public int WIDTH; //ширина панели миникарты
+        static public int HEIGHT; //высота панели миникарты
         static public float ROTATE_ANGLE; //угол одного поворота
-        static public int PLAYER_RADIUS_2D; //радиус круга игрока на 2D карте
-        static public int PLAYER_DIAMETR_2D; //диаметр круга игрока на 2D карте
+        //static public int PLAYER_RADIUS_2D; //радиус круга игрока на 2D карте
+        //static public int PLAYER_DIAMETR_2D; //диаметр круга игрока на 2D карте
         static public int LINE_WIDTH; //длина линии-указателя игрока на 2D карте
         static public int PLAYER_SPEED; //скорость передвижения
         static public int MINIMAP_WIDTH; // ширина миникарты
@@ -35,11 +37,13 @@ namespace RayCastingCSHARP
 
         public void InitSettings(Panel minimap_panel)
         {
-        //-------------------------------2D-------------------------------------
+            //-------------------------------2D-------------------------------------
+        WIDTH = 1200; //ширина панели миникарты
+        HEIGHT = 800; //высота панели миникарты
         ROTATE_ANGLE = 5; //угол одного поворота
-        PLAYER_RADIUS_2D = 10; //радиус круга игрока на 2D карте
-        PLAYER_DIAMETR_2D = PLAYER_RADIUS_2D * 2; //диаметр круга игрока на 2D карте
-        PLAYER_SPEED = 5; //скорость передвижения
+        //PLAYER_RADIUS_2D = 10; //радиус круга игрока на 2D карте
+        //PLAYER_DIAMETR_2D = PLAYER_RADIUS_2D * 2; //диаметр круга игрока на 2D карте
+        PLAYER_SPEED = 20; //скорость передвижения
         MINIMAP_WIDTH = minimap_panel.Size.Width; // ширина миникарты
         MINIMAP_HEIGHT = minimap_panel.Size.Height; ; //высота миникарты
         WIDTH_BLOCKS = 12; //кол-во квадратов карты в ширину
@@ -50,8 +54,8 @@ namespace RayCastingCSHARP
         //RAY CASTING
         FOV = 60;//угол обзора в градусах
         HALF_FOV = FOV / 2; //половина угла обзора
-        NUM_RAYS = 10;//120 //кол-во лучей
-        MAX_DEPTH = 40;//MINIMAP_HEIGHT; //дальность прорисовки
+        NUM_RAYS = 4;//120 //кол-во лучей
+        MAX_DEPTH = 80;//MINIMAP_HEIGHT; //дальность прорисовки
         DELTA_ANGLE = FOV / NUM_RAYS; //угол между лучами
 
 
