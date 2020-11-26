@@ -44,7 +44,7 @@ namespace RayCastingCSHARP
             minimap_2D_panel.Location = new Point(0, 0);
             minimap_2D_panel.Size = new Size(Settings.WIDTH, Settings.HEIGHT);
 
-            
+           
 
             panel_graphics = minimap_2D_panel.CreateGraphics();
            

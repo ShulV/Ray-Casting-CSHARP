@@ -21,11 +21,12 @@ namespace RayCastingCSHARP
             for (int i = 0; i < map.countPoints; i++)
             {
                 Rectangle rect = new Rectangle(Map.pointsSet[i].X, Map.pointsSet[i].Y, Settings.MINIMAP_TILE, Settings.MINIMAP_TILE);
-                graphics.DrawRectangle(Pens.Green, rect);
+                Pen pen = new Pen(Color.Azure, 5f);
+                graphics.DrawRectangle(pen, rect);
                 graphics.FillRectangle(Brushes.Blue, rect);
 
-                Rectangle rectCenter = new Rectangle(Map.pointsCenterSet[i].X, Map.pointsCenterSet[i].Y, 5, 5);
-                graphics.DrawRectangle(Pens.Aqua, rectCenter);
+                //Rectangle rectCenter = new Rectangle(Map.pointsCenterSet[i].X, Map.pointsCenterSet[i].Y, 5, 5);
+                //graphics.DrawRectangle(Pens.Aqua, rectCenter);
             }
         }
         public void drawing_2D_ray(Player player, Graphics gr)
@@ -71,7 +72,7 @@ namespace RayCastingCSHARP
                     if (cur_angle == player.angle) {
                         label.Text = "start_point=" + start_point.ToString() + ", end_point=" + end_point.ToString();
                         player.distance_to_wall = MathHelper.vectorLength(start_point, end_point);
-                        gr.DrawLine(Pens.Red, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
+                        //gr.DrawLine(Pens.Red, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
                     }
                     
 
@@ -82,7 +83,7 @@ namespace RayCastingCSHARP
                                 Rectangle rect_wall = new Rectangle();
                                 double proj_height = Settings.PROJ_COEFF / depth;
                                 rect_wall.X = ray * Settings.SCALE;
-                                rect_wall.Y = Settings.HEIGHT / 2 - (int)(proj_height/2);
+                                rect_wall.Y = Settings.MINIMAP_HEIGHT / 2 - (int)(proj_height/2);
                                 rect_wall.Width = Settings.SCALE;
                                 rect_wall.Height = (int)proj_height;
                                 gr.DrawRectangle(Pens.Brown, rect_wall);

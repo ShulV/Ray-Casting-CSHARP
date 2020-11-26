@@ -17,10 +17,10 @@ namespace RayCastingCSHARP
         public String[] worldMap = {
                 "WWWWWWWWWWWW",
                 "W....W.....W",
-                "W.....W....W",
+                "W.....WWWWWW",
                 "W..........W",
-                "W...W......W",
-                "W..........W",
+                "W........W.W",
+                "W.....W.W..W",
                 "W..........W",
                 "WWWWWWWWWWWW" };
         public Map(Settings settings)

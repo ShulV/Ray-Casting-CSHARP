@@ -60,7 +60,7 @@ namespace RayCastingCSHARP
         // FOR 3D
         DIST = NUM_RAYS/(2*Math.Tan(Settings.HALF_FOV * Math.PI / 180.0)); //расстояние от игрока до стены (расстояние до экрана)
         PROJ_COEFF = DIST * Settings.MINIMAP_TILE; //коэффициент проекции
-        SCALE = (int)(Settings.WIDTH / Settings.NUM_RAYS); //масштабирующий коэф
+        SCALE = (int)(Settings.MINIMAP_WIDTH / Settings.NUM_RAYS); //масштабирующий коэф
         }
         
     }
