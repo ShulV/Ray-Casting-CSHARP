@@ -29,8 +29,9 @@ namespace RayCastingCSHARP
         static public int MAX_DEPTH; //дальность прорисовки
         static public double DELTA_ANGLE; //угол между лучами
         // FOR 3D
-        static public double DIST; //расстояние от игрока до стены
+        static public double DIST; //расстояние от игрока до стены (расстояние до экрана)
         static public double PROJ_COEFF; //коэффициент проекции
+        static public int SCALE; //масштабирующий коэф
 
         static public Pen green_pen; // ручка зеленый 1
         static public Pen black_pen = new Pen(Color.Black, 1);// ручка черный 1
@@ -48,17 +49,18 @@ namespace RayCastingCSHARP
         WIDTH_BLOCKS = 12; //кол-во квадратов карты в ширину
         HEIGHT_BLOCKS = 8; //кол-во квадратов карты в длину
         MINIMAP_TILE = MINIMAP_HEIGHT / HEIGHT_BLOCKS; //сторона квадрата
-        LINE_WIDTH = MINIMAP_WIDTH; //длина линии-указателя игрока на 2D карте
+        LINE_WIDTH = 50; //длина линии-указателя игрока на 2D карте
         PB_Player = new PictureBox(); //картинка игрока на миникарте (2D)
         //RAY CASTING
         FOV = 60;//угол обзора в градусах
         HALF_FOV = FOV / 2; //половина угла обзора
-        NUM_RAYS = 20;//120 //кол-во лучей
-        MAX_DEPTH = 50;//MINIMAP_HEIGHT; //дальность прорисовки
+        NUM_RAYS = 40;//120 //кол-во лучей
+        MAX_DEPTH = 500;//MINIMAP_HEIGHT; //дальность прорисовки
         DELTA_ANGLE = FOV / NUM_RAYS; //угол между лучами
         // FOR 3D
-        DIST = NUM_RAYS/(2*Math.Tan(Settings.HALF_FOV)); //расстояние от игрока до стены
+        DIST = NUM_RAYS/(2*Math.Tan(Settings.HALF_FOV * Math.PI / 180.0)); //расстояние от игрока до стены (расстояние до экрана)
         PROJ_COEFF = DIST * Settings.MINIMAP_TILE; //коэффициент проекции
+        SCALE = (int)(Settings.WIDTH / Settings.NUM_RAYS); //масштабирующий коэф
         }
         
     }

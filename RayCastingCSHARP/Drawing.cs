@@ -49,7 +49,7 @@ namespace RayCastingCSHARP
         {
             gr.FillRectangle(Brushes.White, 0, 0, panel.Width, panel.Height);
         }
-        public void ray_casting(Graphics gr, Player player)
+        public void ray_casting(Graphics gr, Player player, Label label)
         {
             PointF start_point = new PointF((float)player.x, (float)player.y);
             double cur_angle = player.angle - Settings.HALF_FOV;
@@ -66,19 +66,30 @@ namespace RayCastingCSHARP
                     Point end_point_int = new Point((int)(end_x / Settings.MINIMAP_TILE) * Settings.MINIMAP_TILE, (int)(end_y / Settings.MINIMAP_TILE) * Settings.MINIMAP_TILE);
                     end_point_int.X += Settings.MINIMAP_TILE / 2;
                     end_point_int.Y += Settings.MINIMAP_TILE / 2;
-                    gr.DrawLine(Pens.Red, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
+                    //gr.DrawLine(Pens.Red, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
 
-                    if (ray != 0) {
-                        if ((int)(Settings.NUM_RAYS / ray) == ray)
-                        {
-                            player.distance_to_wall = MathHelper.vectorLength(start_point, end_point);
-                        }
+                    if (cur_angle == player.angle) {
+                        label.Text = "start_point=" + start_point.ToString() + ", end_point=" + end_point.ToString();
+                        player.distance_to_wall = MathHelper.vectorLength(start_point, end_point);
+                        gr.DrawLine(Pens.Red, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
                     }
                     
 
                     
                         if (Map.pointsCenterSet.Contains(end_point_int))
                         {
+                            if (depth != 0) {
+                                Rectangle rect_wall = new Rectangle();
+                                double proj_height = Settings.PROJ_COEFF / depth;
+                                rect_wall.X = ray * Settings.SCALE;
+                                rect_wall.Y = Settings.HEIGHT / 2 - (int)(proj_height/2);
+                                rect_wall.Width = Settings.SCALE;
+                                rect_wall.Height = (int)proj_height;
+                                gr.DrawRectangle(Pens.Brown, rect_wall);
+                                gr.FillRectangle(Brushes.BurlyWood, rect_wall);
+                                
+                                
+                            }
                             break;
                         }
                     
