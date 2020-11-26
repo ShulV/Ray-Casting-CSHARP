@@ -28,6 +28,9 @@ namespace RayCastingCSHARP
         static public int NUM_RAYS; //кол-во лучей
         static public int MAX_DEPTH; //дальность прорисовки
         static public double DELTA_ANGLE; //угол между лучами
+        // FOR 3D
+        static public double DIST; //расстояние от игрока до стены
+        static public double PROJ_COEFF; //коэффициент проекции
 
         static public Pen green_pen; // ручка зеленый 1
         static public Pen black_pen = new Pen(Color.Black, 1);// ручка черный 1
@@ -50,14 +53,12 @@ namespace RayCastingCSHARP
         //RAY CASTING
         FOV = 60;//угол обзора в градусах
         HALF_FOV = FOV / 2; //половина угла обзора
-        NUM_RAYS = 4;//120 //кол-во лучей
-        MAX_DEPTH = 80;//MINIMAP_HEIGHT; //дальность прорисовки
+        NUM_RAYS = 20;//120 //кол-во лучей
+        MAX_DEPTH = 50;//MINIMAP_HEIGHT; //дальность прорисовки
         DELTA_ANGLE = FOV / NUM_RAYS; //угол между лучами
-
-
-        green_pen = new Pen(Color.Green, 1);// ручка зеленый 1
-        black_pen = new Pen(Color.Black, 1);// ручка черный 1
-        blue_brush = Brushes.Blue;// кисть синяя
+        // FOR 3D
+        DIST = NUM_RAYS/(2*Math.Tan(Settings.HALF_FOV)); //расстояние от игрока до стены
+        PROJ_COEFF = DIST * Settings.MINIMAP_TILE; //коэффициент проекции
         }
         
     }

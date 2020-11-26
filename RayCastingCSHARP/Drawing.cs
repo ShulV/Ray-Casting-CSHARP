@@ -21,8 +21,8 @@ namespace RayCastingCSHARP
             for (int i = 0; i < map.countPoints; i++)
             {
                 Rectangle rect = new Rectangle(Map.pointsSet[i].X, Map.pointsSet[i].Y, Settings.MINIMAP_TILE, Settings.MINIMAP_TILE);
-                graphics.DrawRectangle(Settings.green_pen, rect);
-                graphics.FillRectangle(Settings.blue_brush, rect);
+                graphics.DrawRectangle(Pens.Green, rect);
+                graphics.FillRectangle(Brushes.Blue, rect);
 
                 Rectangle rectCenter = new Rectangle(Map.pointsCenterSet[i].X, Map.pointsCenterSet[i].Y, 5, 5);
                 graphics.DrawRectangle(Pens.Aqua, rectCenter);
@@ -38,7 +38,7 @@ namespace RayCastingCSHARP
             float Yp = (float)(player.y + Settings.LINE_WIDTH * Math.Sin((double)(player.angle * Math.PI / 180.0)));
 
             PointF p2 = new PointF(Xp, Yp);// вторая точка
-            gr.DrawLine(Settings.green_pen, p1, p2);// рисуем линию  
+            gr.DrawLine(Pens.Green, p1, p2);// рисуем линию  
             float half_side = 6f;
             RectangleF rect = new RectangleF(x1 - half_side, y1 - half_side, half_side * 2, half_side * 2);
             gr.DrawEllipse(Pens.Lime, rect);
