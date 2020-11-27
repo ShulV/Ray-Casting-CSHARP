@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
+
 namespace RayCastingCSHARP
 {
     class Drawing
@@ -56,7 +57,9 @@ namespace RayCastingCSHARP
         {
             PointF start_point = new PointF((float)player.x, (float)player.y);
             double cur_angle = player.angle - Settings.HALF_FOV;
-            
+            Color wall_color = new Color();
+            SolidBrush wall_brush = new SolidBrush(Color.White);
+            int rgb_num = 0;
             for (int ray=0; ray < Settings.NUM_RAYS; ray++)
             {
                 double sin_a = Math.Sin(cur_angle * Math.PI / 180.0);
@@ -87,8 +90,13 @@ namespace RayCastingCSHARP
                                 rect_wall.Y = Settings.MAP_3D_HEIGHT / 2 - (int)(proj_height/2);
                                 rect_wall.Width = Settings.SCALE;
                                 rect_wall.Height = (int)proj_height;
+
+                                rgb_num = (int)(255 / (1 + depth * depth * 0.001)*0.6);
+                                
+                                wall_brush.Color = Color.FromArgb(0, rgb_num, 0);
                                 gr_3D.DrawRectangle(Pens.Brown, rect_wall);
-                                gr_3D.FillRectangle(Brushes.BurlyWood, rect_wall);
+                                gr_3D.FillRectangle(wall_brush, rect_wall);
+                                
                             }
                             break;
                         }
