@@ -34,7 +34,6 @@
             // 
             // map_3D_panel
             // 
-            this.map_3D_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.map_3D_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.map_3D_panel.Location = new System.Drawing.Point(0, 0);
             this.map_3D_panel.Margin = new System.Windows.Forms.Padding(0);
@@ -50,8 +49,6 @@
             this.map_2D_panel.Name = "map_2D_panel";
             this.map_2D_panel.Size = new System.Drawing.Size(240, 160);
             this.map_2D_panel.TabIndex = 1;
-            this.map_2D_panel.Visible = false;
-            this.map_2D_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.minimap_2D_panel_Paint);
             // 
             // GameForm
             // 

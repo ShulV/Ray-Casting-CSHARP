@@ -20,7 +20,7 @@ namespace RayCastingCSHARP
         {
             for (int i = 0; i < map.countPoints; i++)
             {
-                Rectangle rect = new Rectangle(Map.pointsSet[i].X, Map.pointsSet[i].Y, Settings.MINIMAP_TILE, Settings.MINIMAP_TILE);
+                Rectangle rect = new Rectangle(Map.pointsSet[i].X, Map.pointsSet[i].Y, Settings.MAP_TILE, Settings.MAP_TILE);
                 Pen pen = new Pen(Color.Azure, 5f);
                 graphics.DrawRectangle(pen, rect);
                 graphics.FillRectangle(Brushes.Blue, rect);
@@ -53,7 +53,7 @@ namespace RayCastingCSHARP
         }
         public void drawing_2D_background(Graphics gr)
         {
-            gr.FillRectangle(Brushes.White, 0, 0, Settings.MINIMAP_WIDTH, Settings.MINIMAP_HEIGHT);
+            gr.FillRectangle(Brushes.White, 0, 0, Settings.MAP_2D_WIDTH, Settings.MAP_2D_HEIGHT);
         }
         public void ray_casting(Graphics gr_2D, Graphics gr_3D, Player player)
         {
@@ -69,9 +69,9 @@ namespace RayCastingCSHARP
                     float end_x = (float)(player.x + depth * cos_a);
                     float end_y = (float)(player.y + depth * sin_a);
                     PointF end_point = new PointF(end_x, end_y);
-                    Point end_point_int = new Point((int)(end_x / Settings.MINIMAP_TILE) * Settings.MINIMAP_TILE, (int)(end_y / Settings.MINIMAP_TILE) * Settings.MINIMAP_TILE);
-                    end_point_int.X += Settings.MINIMAP_TILE / 2;
-                    end_point_int.Y += Settings.MINIMAP_TILE / 2;
+                    Point end_point_int = new Point((int)(end_x / Settings.MAP_TILE) * Settings.MAP_TILE, (int)(end_y / Settings.MAP_TILE) * Settings.MAP_TILE);
+                    end_point_int.X += Settings.MAP_TILE / 2;
+                    end_point_int.Y += Settings.MAP_TILE / 2;
                     //gr_2D.DrawLine(Pens.Red, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
 
                     if (cur_angle == player.angle) {

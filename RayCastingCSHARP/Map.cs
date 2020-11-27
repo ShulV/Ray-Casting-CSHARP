@@ -39,8 +39,8 @@ namespace RayCastingCSHARP
                 {
                     if (row[m] == 'W')
                     {
-                        pointsSet[countPoints++] = new Point(m * Settings.MINIMAP_TILE, n * Settings.MINIMAP_TILE);
-                        pointsCenterSet[countCenterPoints++] = new Point(m * Settings.MINIMAP_TILE + Settings.MINIMAP_TILE / 2, n * Settings.MINIMAP_TILE + Settings.MINIMAP_TILE / 2);
+                        pointsSet[countPoints++] = new Point(m * Settings.MAP_TILE, n * Settings.MAP_TILE);
+                        pointsCenterSet[countCenterPoints++] = new Point(m * Settings.MAP_TILE + Settings.MAP_TILE / 2, n * Settings.MAP_TILE + Settings.MAP_TILE / 2);
                     }
                 }
             }
