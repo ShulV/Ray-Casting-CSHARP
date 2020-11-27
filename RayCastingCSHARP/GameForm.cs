@@ -14,11 +14,12 @@ namespace RayCastingCSHARP
     {
 
         Settings settings;
-        Map minimap;
+        Map map_2D;
         Drawing draw;
         Player player;
         Point playerPos;
-        Graphics panel_graphics;
+        Graphics map_2D_panel_graphics;
+        Graphics map_3D_panel_graphics;
 
         public GameForm()
         {
@@ -31,23 +32,25 @@ namespace RayCastingCSHARP
         {
             //настройки
             settings = new Settings();
-            settings.InitSettings(minimap_2D_panel);
+            settings.InitSettings(map_2D_panel, map_3D_panel);
             //создание рисовалки
             draw = new Drawing(settings);
             //карта 2D
-            minimap = new Map(settings);
-            minimap.fillPointsSet();
+            map_2D = new Map(settings);
+            map_2D.fillPointsSet();
             //создание игрока
             CreatePlayer();
             playerPos = new Point((int)player.x, (int)player.y);
             //панель для миникарты
-            minimap_2D_panel.Location = new Point(0, 0);
-            minimap_2D_panel.Size = new Size(Settings.WIDTH, Settings.HEIGHT);
+            map_2D_panel.Location = new Point(0, 640);
+            map_2D_panel.Size = new Size(Settings.MINIMAP_WIDTH, Settings.MINIMAP_HEIGHT);
+            map_3D_panel.Location = new Point(0, 0);
+            map_3D_panel.Size = new Size(Settings.WIDTH, Settings.HEIGHT);
 
-           
 
-            panel_graphics = minimap_2D_panel.CreateGraphics();
-           
+
+            map_2D_panel_graphics = map_2D_panel.CreateGraphics();
+            map_3D_panel_graphics = map_3D_panel.CreateGraphics();
             
 
         }
@@ -61,19 +64,20 @@ namespace RayCastingCSHARP
         { 
 
         }
-        public void minimap_2D_panel_refresh(Graphics gr)
+        public void maps_refresh(Graphics gr_2D, Graphics gr_3D)
         {
-            draw.drawing_2D_background(gr, minimap_2D_panel);
-            draw.drawing_2D_map(minimap, gr);
-            draw.drawing_2D_ray(player, gr);
-            draw.ray_casting(gr, player, label1);
+            //draw.drawing_2D_background(gr_2D);
+            //draw.drawing_2D_map(minimap, gr_2D);
+            //draw.drawing_2D_ray(player, gr);
+            draw.drawing_3D_background(gr_3D);
+            draw.ray_casting(gr_2D, gr_3D, player);
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.W)
             {
-                label1.Text = Math.Ceiling(player.distance_to_wall).ToString() + "   ___     " + Settings.PLAYER_SPEED + ";";
+                //label1.Text = Math.Ceiling(player.distance_to_wall).ToString() + "   ___     " + Settings.PLAYER_SPEED + ";";
                 if (Math.Ceiling(player.distance_to_wall*1.5) > Settings.PLAYER_SPEED) {
                     player.x += (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
                     player.y += (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
@@ -92,9 +96,9 @@ namespace RayCastingCSHARP
             playerPos.Y = (int)player.y;
 
             double cur_angle = player.angle - Settings.HALF_FOV;
-            
 
-            minimap_2D_panel_refresh(panel_graphics);
+
+            maps_refresh(map_2D_panel_graphics, map_3D_panel_graphics);
             Invalidate();//перерисовка
             
         }
@@ -106,7 +110,7 @@ namespace RayCastingCSHARP
 
         private void GameForm_Shown(object sender, EventArgs e)
         {
-            minimap_2D_panel_refresh(panel_graphics);
+            maps_refresh(map_2D_panel_graphics, map_3D_panel_graphics);
         }
     }
 }

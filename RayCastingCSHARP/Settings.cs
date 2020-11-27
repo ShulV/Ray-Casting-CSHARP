@@ -18,6 +18,8 @@ namespace RayCastingCSHARP
         static public int PLAYER_SPEED; //скорость передвижения
         static public int MINIMAP_WIDTH; // ширина миникарты
         static public int MINIMAP_HEIGHT; //высота миникарты
+        static public int MAP_3D_WIDTH; // ширина 3d карты
+        static public int MAP_3D_HEIGHT; // высота 3d карты
         static public int MINIMAP_TILE;//сторона квадрата
         static public int WIDTH_BLOCKS; //кол-во квадратов карты в ширину
         static public int HEIGHT_BLOCKS; //кол-во квадратов карты в длину
@@ -37,15 +39,17 @@ namespace RayCastingCSHARP
         static public Pen black_pen = new Pen(Color.Black, 1);// ручка черный 1
         static public Brush blue_brush = Brushes.Blue;// кисть синяя
 
-        public void InitSettings(Panel minimap_panel)
+        public void InitSettings(Panel map_2D_panel, Panel map_3D_panel)
         {
             //-------------------------------2D-------------------------------------
         WIDTH = 1200; //ширина панели миникарты
         HEIGHT = 800; //высота панели миникарты
         ROTATE_ANGLE = 5; //угол одного поворота
         PLAYER_SPEED = 20; //скорость передвижения
-        MINIMAP_WIDTH = minimap_panel.Size.Width; // ширина миникарты
-        MINIMAP_HEIGHT = minimap_panel.Size.Height; ; //высота миникарты
+        MINIMAP_WIDTH = map_2D_panel.Size.Width; // ширина миникарты
+        MINIMAP_HEIGHT = map_2D_panel.Size.Height; //высота миникарты
+        MAP_3D_WIDTH = map_3D_panel.Size.Width; // ширина 3d карты
+        MAP_3D_HEIGHT = map_3D_panel.Size.Height; // высота 3d карты
         WIDTH_BLOCKS = 12; //кол-во квадратов карты в ширину
         HEIGHT_BLOCKS = 8; //кол-во квадратов карты в длину
         MINIMAP_TILE = MINIMAP_HEIGHT / HEIGHT_BLOCKS; //сторона квадрата
@@ -59,8 +63,8 @@ namespace RayCastingCSHARP
         DELTA_ANGLE = FOV / NUM_RAYS; //угол между лучами
         // FOR 3D
         DIST = NUM_RAYS/(2*Math.Tan(Settings.HALF_FOV * Math.PI / 180.0)); //расстояние от игрока до стены (расстояние до экрана)
-        PROJ_COEFF = DIST * Settings.MINIMAP_TILE; //коэффициент проекции
-        SCALE = (int)(Settings.MINIMAP_WIDTH / Settings.NUM_RAYS); //масштабирующий коэф
+        PROJ_COEFF = 3* DIST * Settings.MINIMAP_TILE; //коэффициент проекции
+        SCALE = (int)(Settings.MAP_3D_WIDTH / Settings.NUM_RAYS); //масштабирующий коэф
         }
         
     }

@@ -46,11 +46,16 @@ namespace RayCastingCSHARP
             gr.FillEllipse(Brushes.Lime, rect);
 
         }
-        public void drawing_2D_background(Graphics gr, Panel panel)
+        public void drawing_3D_background(Graphics gr)
         {
-            gr.FillRectangle(Brushes.White, 0, 0, panel.Width, panel.Height);
+            gr.FillRectangle(Brushes.SkyBlue, 0, 0, Settings.MAP_3D_WIDTH, Settings.MAP_3D_HEIGHT/2);
+            gr.FillRectangle(Brushes.SaddleBrown, 0, Settings.MAP_3D_HEIGHT / 2, Settings.MAP_3D_WIDTH, Settings.MAP_3D_HEIGHT / 2);
         }
-        public void ray_casting(Graphics gr, Player player, Label label)
+        public void drawing_2D_background(Graphics gr)
+        {
+            gr.FillRectangle(Brushes.White, 0, 0, Settings.MINIMAP_WIDTH, Settings.MINIMAP_HEIGHT);
+        }
+        public void ray_casting(Graphics gr_2D, Graphics gr_3D, Player player)
         {
             PointF start_point = new PointF((float)player.x, (float)player.y);
             double cur_angle = player.angle - Settings.HALF_FOV;
@@ -67,12 +72,11 @@ namespace RayCastingCSHARP
                     Point end_point_int = new Point((int)(end_x / Settings.MINIMAP_TILE) * Settings.MINIMAP_TILE, (int)(end_y / Settings.MINIMAP_TILE) * Settings.MINIMAP_TILE);
                     end_point_int.X += Settings.MINIMAP_TILE / 2;
                     end_point_int.Y += Settings.MINIMAP_TILE / 2;
-                    //gr.DrawLine(Pens.Red, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
+                    //gr_2D.DrawLine(Pens.Red, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
 
                     if (cur_angle == player.angle) {
-                        label.Text = "start_point=" + start_point.ToString() + ", end_point=" + end_point.ToString();
                         player.distance_to_wall = MathHelper.vectorLength(start_point, end_point);
-                        //gr.DrawLine(Pens.Red, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
+                        //gr_2D.DrawLine(Pens.Red, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
                     }
                     
 
@@ -83,13 +87,11 @@ namespace RayCastingCSHARP
                                 Rectangle rect_wall = new Rectangle();
                                 double proj_height = Settings.PROJ_COEFF / depth;
                                 rect_wall.X = ray * Settings.SCALE;
-                                rect_wall.Y = Settings.MINIMAP_HEIGHT / 2 - (int)(proj_height/2);
+                                rect_wall.Y = Settings.MAP_3D_HEIGHT / 2 - (int)(proj_height/2);
                                 rect_wall.Width = Settings.SCALE;
                                 rect_wall.Height = (int)proj_height;
-                                gr.DrawRectangle(Pens.Brown, rect_wall);
-                                gr.FillRectangle(Brushes.BurlyWood, rect_wall);
-                                
-                                
+                                gr_3D.DrawRectangle(Pens.Brown, rect_wall);
+                                gr_3D.FillRectangle(Brushes.BurlyWood, rect_wall);
                             }
                             break;
                         }
