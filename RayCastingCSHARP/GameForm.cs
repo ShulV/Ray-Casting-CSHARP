@@ -42,10 +42,10 @@ namespace RayCastingCSHARP
             CreatePlayer();
             playerPos = new Point((int)player.x, (int)player.y);
             //панель для миникарты
-            map_2D_panel.Location = new Point(0, 640);
+            map_2D_panel.Location = new Point(0, Settings.MAP_3D_HEIGHT - Settings.MAP_2D_HEIGHT);
             map_2D_panel.Size = new Size(Settings.MAP_2D_WIDTH, Settings.MAP_2D_HEIGHT);
             map_3D_panel.Location = new Point(0, 0);
-            map_3D_panel.Size = new Size(Settings.WIDTH, Settings.HEIGHT);
+            map_3D_panel.Size = new Size(Settings.MAP_3D_WIDTH, Settings.MAP_3D_HEIGHT);
 
 
 
@@ -62,9 +62,9 @@ namespace RayCastingCSHARP
 
         public void maps_refresh(Graphics gr_2D, Graphics gr_3D)
         {
-            //draw.drawing_2D_background(gr_2D);
-            //draw.drawing_2D_map(map_2D, gr_2D);
-            //draw.drawing_2D_ray(player, gr_2D);
+            draw.drawing_2D_background(gr_2D);
+            draw.drawing_2D_map(map_2D, gr_2D);
+            draw.drawing_2D_ray(player, gr_2D);
             draw.drawing_3D_background(gr_3D);
             draw.ray_casting(gr_2D, gr_3D, player);
         }

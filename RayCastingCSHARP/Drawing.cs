@@ -20,13 +20,10 @@ namespace RayCastingCSHARP
         {
             for (int i = 0; i < map.countPoints; i++)
             {
-                Rectangle rect = new Rectangle(Map.pointsSet[i].X, Map.pointsSet[i].Y, Settings.MAP_TILE, Settings.MAP_TILE);
-                Pen pen = new Pen(Color.Azure, 5f);
+                Rectangle rect = new Rectangle(Map.pointsSet[i].X/Settings.SCALE_FACTOR, Map.pointsSet[i].Y / Settings.SCALE_FACTOR, Settings.MAP_TILE / Settings.SCALE_FACTOR, Settings.MAP_TILE / Settings.SCALE_FACTOR);
+                Pen pen = new Pen(Color.Azure, 2f);
                 graphics.DrawRectangle(pen, rect);
                 graphics.FillRectangle(Brushes.Blue, rect);
-
-                //Rectangle rectCenter = new Rectangle(Map.pointsCenterSet[i].X, Map.pointsCenterSet[i].Y, 5, 5);
-                //graphics.DrawRectangle(Pens.Aqua, rectCenter);
             }
         }
         public void drawing_2D_ray(Player player, Graphics gr)
@@ -34,14 +31,14 @@ namespace RayCastingCSHARP
             
             float x1 = (float)(player.x);
             float y1 = (float)(player.y);
-            PointF p1 = new PointF((float)x1, (float)y1);// первая точка
+            PointF p1 = new PointF((float)x1/Settings.SCALE_FACTOR, (float)y1/Settings.SCALE_FACTOR);// первая точка
             float Xp = (float)(player.x + Settings.LINE_WIDTH * Math.Cos((double)(player.angle * Math.PI / 180.0)));
             float Yp = (float)(player.y + Settings.LINE_WIDTH * Math.Sin((double)(player.angle * Math.PI / 180.0)));
 
-            PointF p2 = new PointF(Xp, Yp);// вторая точка
+            PointF p2 = new PointF(Xp / Settings.SCALE_FACTOR, Yp / Settings.SCALE_FACTOR);// вторая точка
             gr.DrawLine(Pens.Green, p1, p2);// рисуем линию  
-            float half_side = 6f;
-            RectangleF rect = new RectangleF(x1 - half_side, y1 - half_side, half_side * 2, half_side * 2);
+            float half_side = 4f;
+            RectangleF rect = new RectangleF(x1 / Settings.SCALE_FACTOR - half_side, y1 / Settings.SCALE_FACTOR - half_side, half_side * 2, half_side * 2);
             gr.DrawEllipse(Pens.Lime, rect);
             gr.FillEllipse(Brushes.Lime, rect);
 

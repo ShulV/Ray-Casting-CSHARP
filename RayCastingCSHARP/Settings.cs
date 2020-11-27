@@ -13,6 +13,7 @@ namespace RayCastingCSHARP
         //-------------------------------2D-------------------------------------
         static public int WIDTH; //ширина панели миникарты
         static public int HEIGHT; //высота панели миникарты
+        static public int SCALE_FACTOR; //масштабирующий коэф (в это число раз панель 2д карты меньше панели 3д карты)
         static public float ROTATE_ANGLE; //угол одного поворота
         static public int LINE_WIDTH; //длина линии-указателя игрока на 2D карте
         static public int PLAYER_SPEED; //скорость передвижения
@@ -44,13 +45,13 @@ namespace RayCastingCSHARP
             //-------------------------------2D-------------------------------------
         WIDTH = 1200; //ширина панели миникарты
         HEIGHT = 800; //высота панели миникарты
-
+        SCALE_FACTOR = 5; //масштабирующий коэф (в это число раз панель 2д карты меньше панели 3д карты)
         ROTATE_ANGLE = 5; //угол одного поворота
         PLAYER_SPEED = 20; //скорость передвижения
-        MAP_2D_WIDTH = map_2D_panel.Size.Width; // ширина миникарты
-        MAP_2D_HEIGHT = map_2D_panel.Size.Height; //высота миникарты
-        MAP_3D_WIDTH = map_3D_panel.Size.Width; // ширина 3d карты
-        MAP_3D_HEIGHT = map_3D_panel.Size.Height; // высота 3d карты
+        MAP_2D_WIDTH = 240; // ширина миникарты
+        MAP_2D_HEIGHT = 160; //высота миникарты
+        MAP_3D_WIDTH = 1200; // ширина 3d карты
+        MAP_3D_HEIGHT = 800; // высота 3d карты
         WIDTH_BLOCKS = 12; //кол-во квадратов карты в ширину
         HEIGHT_BLOCKS = 8; //кол-во квадратов карты в длину
         MAP_TILE = HEIGHT / HEIGHT_BLOCKS; //сторона квадрата
