@@ -34,21 +34,20 @@ namespace RayCastingCSHARP
             settings = new Settings();
             settings.InitSettings(map_2D_panel, map_3D_panel);
             //создание рисовалки
-            draw = new Drawing(settings);
+            draw = new Drawing();
             //карта 2D
             map_2D = new Map(settings);
             map_2D.fillPointsSet();
             //создание игрока
             CreatePlayer();
             playerPos = new Point((int)player.x, (int)player.y);
-            //панель для миникарты
+            //панель для 2D карты
             map_2D_panel.Location = new Point(0, Settings.MAP_3D_HEIGHT - Settings.MAP_2D_HEIGHT);
             map_2D_panel.Size = new Size(Settings.MAP_2D_WIDTH, Settings.MAP_2D_HEIGHT);
+            //панель для 3D карты
             map_3D_panel.Location = new Point(0, 0);
             map_3D_panel.Size = new Size(Settings.MAP_3D_WIDTH, Settings.MAP_3D_HEIGHT);
-
-
-
+            
             map_2D_panel_graphics = map_2D_panel.CreateGraphics();
             map_3D_panel_graphics = map_3D_panel.CreateGraphics();
             

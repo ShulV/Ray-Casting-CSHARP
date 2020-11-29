@@ -13,9 +13,9 @@ namespace RayCastingCSHARP
     {
         Settings settings;
 
-        public Drawing(Settings settings)
+        public Drawing()
         {
-            this.settings = settings;
+
         }
         public void drawing_2D_map(Map map, Graphics graphics)
         {
@@ -62,7 +62,6 @@ namespace RayCastingCSHARP
         {
             PointF start_point = new PointF((float)player.x, (float)player.y);
             double cur_angle = player.angle - Settings.HALF_FOV;
-            Color wall_color = new Color();
             SolidBrush wall_brush = new SolidBrush(Color.White);
             int rgb_num = 0;
             //проход по всем лучам в цикле
