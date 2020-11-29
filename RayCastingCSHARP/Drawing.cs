@@ -90,22 +90,21 @@ namespace RayCastingCSHARP
                         //отсллеживание пересечения со стеной
                         if (Map.pointsCenterSet.Contains(end_point_int))
                         {
-                            if (depth != 0) {
-                                //отрисовка одной прямоугольной части стены
-                                Rectangle rect_wall = new Rectangle();
-                                double proj_height = Settings.PROJ_COEFF / depth;
-                                rect_wall.X = ray * Settings.SCALE;
-                                rect_wall.Y = Settings.MAP_3D_HEIGHT / 2 - (int)(proj_height/2);
-                                rect_wall.Width = Settings.SCALE;
-                                rect_wall.Height = (int)proj_height;
-                                //изменение цвета относительно расстояния до стены
-                                rgb_num = (int)(255 / (1 + depth * depth * 0.001)*0.6);
-                                wall_brush.Color = Color.FromArgb(0, rgb_num, 0);
-                                //
-                                gr_3D.DrawRectangle(Pens.Brown, rect_wall);
-                                gr_3D.FillRectangle(wall_brush, rect_wall);
-                                
-                            }
+                            //
+                            //depth = (int)(depth * Math.Cos(player.angle - cur_angle));
+                            //отрисовка одной прямоугольной части стены
+                            Rectangle rect_wall = new Rectangle();
+                            double proj_height = Settings.PROJ_COEFF / depth;
+                            rect_wall.X = ray * Settings.SCALE;
+                            rect_wall.Y = Settings.MAP_3D_HEIGHT / 2 - (int)(proj_height/2);
+                            rect_wall.Width = Settings.SCALE;
+                            rect_wall.Height = (int)proj_height;
+                        //изменение цвета относительно расстояния до стены
+                        rgb_num = (int)(255 / (1 + depth * depth * 0.0001));// *0.6);
+                            wall_brush.Color = Color.FromArgb((int)(rgb_num/2), rgb_num, (int)(rgb_num / 3));
+                            //
+                            gr_3D.DrawRectangle(Pens.Brown, rect_wall);
+                            gr_3D.FillRectangle(wall_brush, rect_wall);
                             break;
                         }
                     

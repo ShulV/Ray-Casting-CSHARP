@@ -8,10 +8,10 @@ namespace RayCastingCSHARP
 {
     class Player
     {
-        public double x;
-        public double y;
-        public double angle;
-        public double distance_to_wall;
+        public double x;//координата x
+        public double y;//координата y
+        public double angle;//угол поворота
+        public double distance_to_wall;//расстояние до стены
         public Player(double x, double y, double angle)
         {
             this.x = x;

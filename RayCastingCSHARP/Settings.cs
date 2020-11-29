@@ -59,8 +59,8 @@ namespace RayCastingCSHARP
         //RAY CASTING
         FOV = 60;//угол обзора в градусах
         HALF_FOV = FOV / 2; //половина угла обзора
-        NUM_RAYS = 40;//120 //кол-во лучей
-        MAX_DEPTH = 500;//HEIGHT; //дальность прорисовки
+        NUM_RAYS = 120;//120 //кол-во лучей
+        MAX_DEPTH = 800;//HEIGHT; //дальность прорисовки
         DELTA_ANGLE = FOV / NUM_RAYS; //угол между лучами
         // FOR 3D
         DIST = NUM_RAYS/(2*Math.Tan(Settings.HALF_FOV * Math.PI / 180.0)); //расстояние от игрока до стены (расстояние до экрана)

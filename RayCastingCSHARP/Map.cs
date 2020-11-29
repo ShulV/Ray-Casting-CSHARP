@@ -9,18 +9,17 @@ namespace RayCastingCSHARP
 {
     class Map
     {
-        public Settings settings;
-        static public Point[] pointsSet = new Point[12 * 8];
-        static public Point[] pointsCenterSet = new Point[12 * 8];
-        public int countPoints;
-        public int countCenterPoints;
+        static public Point[] pointsSet = new Point[Settings.WIDTH_BLOCKS * Settings.HEIGHT_BLOCKS];//массив точек, являющихся верхними левым углами квадратов, из которых состоит карта
+        static public Point[] pointsCenterSet = new Point[Settings.WIDTH_BLOCKS * Settings.HEIGHT_BLOCKS];//массив точек, являющихся центрами квадратов, из которых состоит карта
+        public int countPoints;//количетсво точек, являющихся верхними левым углами квадратов, из которых состоит карта
+        public int countCenterPoints;//кол-во точек, являющихся центрами квадратов, из которых состоит карта
         public String[] worldMap = {
                 "WWWWWWWWWWWW",
                 "W....W.....W",
-                "W.....WWWWWW",
-                "W..........W",
+                "WW..W.WWWWWW",
+                "W..W.......W",
                 "W........W.W",
-                "W.....W.W..W",
+                "WWWWW.WWWW.W",
                 "W..........W",
                 "WWWWWWWWWWWW" };
         public Map()
@@ -38,7 +37,9 @@ namespace RayCastingCSHARP
                 {
                     if (row[m] == 'W')
                     {
+                        //массив точек, являющихся верхними левым углами квадратов, из которых состоит карта
                         pointsSet[countPoints++] = new Point(m * Settings.MAP_TILE, n * Settings.MAP_TILE);
+                        //массив точек, являющихся центрами квадратов, из которых состоит карта
                         pointsCenterSet[countCenterPoints++] = new Point(m * Settings.MAP_TILE + Settings.MAP_TILE / 2, n * Settings.MAP_TILE + Settings.MAP_TILE / 2);
                     }
                 }

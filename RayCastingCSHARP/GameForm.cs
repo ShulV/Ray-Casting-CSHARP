@@ -44,7 +44,7 @@ namespace RayCastingCSHARP
             //панель для 3D карты
             map_3D_panel.Location = new Point(0, 0);
             map_3D_panel.Size = new Size(Settings.MAP_3D_WIDTH, Settings.MAP_3D_HEIGHT);
-            
+            //графика для панелей (нужна для рисования)
             map_2D_panel_graphics = map_2D_panel.CreateGraphics();
             map_3D_panel_graphics = map_3D_panel.CreateGraphics();
             
