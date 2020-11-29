@@ -76,7 +76,7 @@ namespace RayCastingCSHARP
                     PointF end_point = new PointF(end_x, end_y);
                     Point end_point_int = new Point((int)(end_x / Settings.MAP_TILE) * Settings.MAP_TILE, (int)(end_y / Settings.MAP_TILE) * Settings.MAP_TILE);
                     //конечные координаты текущего луча в INT для расчета расстояния до стены
-                    end_point_int.X += Settings.MAP_TILE / 2;
+                    end_point_int.X += Settings.MAP_TILE / 2 ;
                     end_point_int.Y += Settings.MAP_TILE / 2;
                     //gr_2D.DrawLine(Pens.Red, start_point.X, start_point.Y, end_x, end_y);// рисуем линию
 

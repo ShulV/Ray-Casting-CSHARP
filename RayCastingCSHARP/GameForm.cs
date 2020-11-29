@@ -67,12 +67,19 @@ namespace RayCastingCSHARP
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {
+            //label1.Text = "до стены: " + Math.Ceiling(player.distance_to_wall).ToString() + "\tскорость: " + Settings.PLAYER_SPEED + ";";
             if (e.KeyCode == Keys.W)
             {
-                //label1.Text = Math.Ceiling(player.distance_to_wall).ToString() + "   ___     " + Settings.PLAYER_SPEED + ";";
-                if (Math.Ceiling(player.distance_to_wall*1.5) > Settings.PLAYER_SPEED) {
+                
+                if (Math.Ceiling(player.distance_to_wall) > Settings.PLAYER_SPEED) {
                     player.x += (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
                     player.y += (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
+                }
+                else
+                {
+                    //если игрок оказался в стене, вернуть его на назад
+                    player.x -= (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
+                    player.y -= (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
                 }
                 
             }
