@@ -40,7 +40,7 @@ namespace RayCastingCSHARP
         static public Pen black_pen = new Pen(Color.Black, 1);// ручка черный 1
         static public Brush blue_brush = Brushes.Blue;// кисть синяя
 
-        public void InitSettings(Panel map_2D_panel, Panel map_3D_panel)
+        static public void InitSettings(Panel map_2D_panel, Panel map_3D_panel)
         {
             //-------------------------------2D-------------------------------------
         WIDTH = 1200; //ширина панели миникарты
@@ -56,7 +56,6 @@ namespace RayCastingCSHARP
         HEIGHT_BLOCKS = 8; //кол-во квадратов карты в длину
         MAP_TILE = HEIGHT / HEIGHT_BLOCKS; //сторона квадрата
         LINE_WIDTH = 50; //длина линии-указателя игрока на 2D карте
-        PB_Player = new PictureBox(); //картинка игрока на миникарте (2D)
         //RAY CASTING
         FOV = 60;//угол обзора в градусах
         HALF_FOV = FOV / 2; //половина угла обзора

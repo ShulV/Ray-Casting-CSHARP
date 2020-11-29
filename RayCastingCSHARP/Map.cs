@@ -23,9 +23,8 @@ namespace RayCastingCSHARP
                 "W.....W.W..W",
                 "W..........W",
                 "WWWWWWWWWWWW" };
-        public Map(Settings settings)
+        public Map()
         {
-            this.settings = settings;
         }
         
         public void fillPointsSet()

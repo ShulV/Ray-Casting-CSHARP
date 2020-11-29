@@ -12,8 +12,6 @@ namespace RayCastingCSHARP
 {
     public partial class GameForm : Form
     {
-
-        Settings settings;
         Map map_2D;
         Drawing draw;
         Player player;
@@ -31,12 +29,11 @@ namespace RayCastingCSHARP
         private void GameForm_Load(object sender, EventArgs e)
         {
             //настройки
-            settings = new Settings();
-            settings.InitSettings(map_2D_panel, map_3D_panel);
+            Settings.InitSettings(map_2D_panel, map_3D_panel);
             //создание рисовалки
             draw = new Drawing();
             //карта 2D
-            map_2D = new Map(settings);
+            map_2D = new Map();
             map_2D.fillPointsSet();
             //создание игрока
             CreatePlayer();

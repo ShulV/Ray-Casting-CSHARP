@@ -11,8 +11,6 @@ namespace RayCastingCSHARP
 {
     class Drawing
     {
-        Settings settings;
-
         public Drawing()
         {
 
