@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace RayCastingCSHARP
 {
@@ -18,6 +19,10 @@ namespace RayCastingCSHARP
         Point playerPos;
         Graphics map_2D_panel_graphics;
         Graphics map_3D_panel_graphics;
+        //Graphics game_form_graphics;
+
+        DateTime _lastCheckTime = DateTime.Now; //последнее проверенное время
+        long _frameCount = 0;
 
         public GameForm()
         {
@@ -47,8 +52,8 @@ namespace RayCastingCSHARP
             //графика для панелей (нужна для рисования)
             map_2D_panel_graphics = map_2D_panel.CreateGraphics();
             map_3D_panel_graphics = map_3D_panel.CreateGraphics();
-            
 
+            //game_form_graphics = this.CreateGraphics();
         }
 
         public void CreatePlayer()
@@ -63,6 +68,7 @@ namespace RayCastingCSHARP
             draw.drawing_2D_ray(player, gr_2D);
             draw.drawing_3D_background(gr_3D);
             draw.ray_casting(gr_2D, gr_3D, player);
+            draw.drawing_fps(fps_label, GetFps());
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
@@ -74,22 +80,26 @@ namespace RayCastingCSHARP
                 if (Math.Ceiling(player.distance_to_wall) > Settings.PLAYER_SPEED) {
                     player.x += (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
                     player.y += (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
+                    OnMapUpdated();
                 }
                 else
                 {
                     //если игрок оказался в стене, вернуть его на назад
                     player.x -= (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
                     player.y -= (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
+                    OnMapUpdated();
                 }
                 
             }
             if (e.KeyCode == Keys.Left)
             {
                 player.angle -= Settings.ROTATE_ANGLE;
+                OnMapUpdated();
             }
             if (e.KeyCode == Keys.Right)
             {
                 player.angle += Settings.ROTATE_ANGLE;
+                OnMapUpdated();
             }
             playerPos.X = (int)player.x;
             playerPos.Y = (int)player.y;
@@ -98,7 +108,8 @@ namespace RayCastingCSHARP
 
 
             maps_refresh(map_2D_panel_graphics, map_3D_panel_graphics);
-            Invalidate();//перерисовка
+
+            //Invalidate();//перерисовка
             
         }
 
@@ -110,6 +121,26 @@ namespace RayCastingCSHARP
         private void GameForm_Shown(object sender, EventArgs e)
         {
             maps_refresh(map_2D_panel_graphics, map_3D_panel_graphics);
+        }
+        
+
+        
+        void OnMapUpdated()
+        //вызывать, когда карта обновляется
+        {
+
+            Interlocked.Increment(ref _frameCount);
+        }
+
+        
+        double GetFps()
+        {
+            // вызывать постоянно (в цикле)
+            double secondsElapsed = (DateTime.Now - _lastCheckTime).TotalSeconds;
+            long count = Interlocked.Exchange(ref _frameCount, 0);
+            double fps = count / secondsElapsed;
+            _lastCheckTime = DateTime.Now;
+            return fps;
         }
     }
 }

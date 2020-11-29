@@ -56,7 +56,97 @@ namespace RayCastingCSHARP
             //закрашивание 2D карты
             gr.FillRectangle(Brushes.White, 0, 0, Settings.MAP_2D_WIDTH, Settings.MAP_2D_HEIGHT);
         }
+        public Point mapping(double a, double b)
+        {
+            //получение ближайшего слева сверху пересечения вертикалей и горизонаталей
+            //от текущей позиции игрока
+            int tile = Settings.MAP_TILE;
+            Point point = new Point((int)(a / tile * tile), (int)(b / tile * tile));
+            return point;
+        }
+        /*
         public void ray_casting(Graphics gr_2D, Graphics gr_3D, Player player)
+        {
+            PointF point_0 = new PointF((float)player.x, (float)player.y);
+            double x = 0, y = 0;
+            int dx = 0, dy = 0;
+            double depth = 0, depth_v = 0, depth_h = 0;
+            Point point_m = mapping(player.x, player.y);
+            double cur_angle = player.angle - Settings.HALF_FOV;
+            SolidBrush wall_brush = new SolidBrush(Color.White);
+            int rgb_num = 0;
+            //проход по всем лучам в цикле
+            for (int ray = 0; ray < Settings.NUM_RAYS; ray++)
+            {
+                double sin_a = Math.Sin(cur_angle * Math.PI / 180.0);
+                double cos_a = Math.Cos(cur_angle * Math.PI / 180.0);
+                
+                //вертикали
+                if (cos_a >= 0)
+                {
+                    x = point_m.X + Settings.MAP_TILE;
+                    dx = 1;
+                }
+                else
+                {
+                    x = point_m.X;
+                    dx = -1;
+                }
+                for(int i=0; i<Settings.WIDTH; i = i + Settings.MAP_TILE)
+                {
+                    depth_v = (x - point_0.X) / cos_a;
+                    y = point_0.Y + depth_v * sin_a;
+                    if (Map.pointsCenterSet.Contains(new Point((int)(x + dx), (int)y)))
+                    {
+                        break;
+                    }
+                    x += dx * Settings.MAP_TILE;
+                }
+                //горизонтали
+                if (sin_a >= 0)
+                {
+                    y = point_m.Y + Settings.MAP_TILE;
+                    dy = 1;
+                }
+                else
+                {
+                    y = point_m.Y;
+                    dy = -1;
+                }
+                for (int i = 0; i < Settings.HEIGHT; i = i + Settings.MAP_TILE)
+                {
+                    depth_h = (y - point_0.Y) / sin_a;
+                    x = point_0.X + depth_h * cos_a;
+                    if (Map.pointsCenterSet.Contains(new Point((int)x, (int)(y+dy))))
+                    {
+                        break;
+                    }
+                    y += dy * Settings.MAP_TILE;
+                }
+                //проецирование
+                if (depth_v < depth_h) depth = depth_v;
+                else depth = depth_h;
+
+                //отрисовка одной прямоугольной части стены
+                Rectangle rect_wall = new Rectangle();
+                double proj_height = Settings.PROJ_COEFF / (int)depth;
+                rect_wall.X = ray * Settings.SCALE;
+                rect_wall.Y = Settings.MAP_3D_HEIGHT / 2 - (int)(proj_height / 2);
+                rect_wall.Width = Settings.SCALE;
+                rect_wall.Height = (int)proj_height;
+                //изменение цвета относительно расстояния до стены
+                rgb_num = (int)(255 / (1 + (int)depth * (int)depth * 0.00003));
+                wall_brush.Color = Color.FromArgb((int)(rgb_num / 2), rgb_num, (int)(rgb_num / 3));
+                //
+                gr_3D.DrawRectangle(Pens.Brown, rect_wall);
+                gr_3D.FillRectangle(wall_brush, rect_wall);
+
+                cur_angle += Settings.DELTA_ANGLE;
+            }
+        }
+        */
+        
+                 public void ray_casting(Graphics gr_2D, Graphics gr_3D, Player player)
         {
             PointF start_point = new PointF((float)player.x, (float)player.y);
             double cur_angle = player.angle - Settings.HALF_FOV;
@@ -100,7 +190,7 @@ namespace RayCastingCSHARP
                             rect_wall.Width = Settings.SCALE;
                             rect_wall.Height = (int)proj_height;
                         //изменение цвета относительно расстояния до стены
-                        rgb_num = (int)(255 / (1 + depth * depth * 0.0001));// *0.6);
+                        rgb_num = (int)(255 / (1 + depth * depth * 0.00003));
                             wall_brush.Color = Color.FromArgb((int)(rgb_num/2), rgb_num, (int)(rgb_num / 3));
                             //
                             gr_3D.DrawRectangle(Pens.Brown, rect_wall);
@@ -112,6 +202,14 @@ namespace RayCastingCSHARP
                 }
                 cur_angle += Settings.DELTA_ANGLE;
             }
+        }
+         
+        
+
+
+        public void drawing_fps(Label fps_label, double fps)
+        {
+            fps_label.Text = "FPS " + ((int)fps).ToString();
         }
 
     }

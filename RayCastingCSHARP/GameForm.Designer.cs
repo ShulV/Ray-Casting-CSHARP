@@ -29,20 +29,31 @@
         private void InitializeComponent()
         {
             this.map_3D_panel = new System.Windows.Forms.Panel();
+            this.fps_label = new System.Windows.Forms.Label();
             this.map_2D_panel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.map_3D_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // map_3D_panel
             // 
+            this.map_3D_panel.BackColor = System.Drawing.SystemColors.Control;
             this.map_3D_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.map_3D_panel.Controls.Add(this.label1);
+            this.map_3D_panel.Controls.Add(this.fps_label);
             this.map_3D_panel.Location = new System.Drawing.Point(0, 0);
             this.map_3D_panel.Margin = new System.Windows.Forms.Padding(0);
             this.map_3D_panel.Name = "map_3D_panel";
             this.map_3D_panel.Size = new System.Drawing.Size(960, 640);
             this.map_3D_panel.TabIndex = 0;
+            // 
+            // fps_label
+            // 
+            this.fps_label.AutoSize = true;
+            this.fps_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fps_label.Location = new System.Drawing.Point(3, 0);
+            this.fps_label.Name = "fps_label";
+            this.fps_label.Size = new System.Drawing.Size(35, 37);
+            this.fps_label.TabIndex = 2;
+            this.fps_label.Text = "0";
             // 
             // map_2D_panel
             // 
@@ -52,16 +63,6 @@
             this.map_2D_panel.Name = "map_2D_panel";
             this.map_2D_panel.Size = new System.Drawing.Size(192, 128);
             this.map_2D_panel.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 37);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
             // 
             // GameForm
             // 
@@ -89,6 +90,6 @@
 
         private System.Windows.Forms.Panel map_3D_panel;
         private System.Windows.Forms.Panel map_2D_panel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label fps_label;
     }
 }
