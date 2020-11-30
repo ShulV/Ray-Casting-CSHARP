@@ -22,7 +22,6 @@ namespace RayCastingCSHARP
         static public int MAP_TILE;//сторона квадрата
         static public int WIDTH_BLOCKS; //кол-во квадратов карты в ширину
         static public int HEIGHT_BLOCKS; //кол-во квадратов карты в длину
-        public PictureBox PB_Player; //картинка игрока на миникарте (2D)
         // RAY CASTING
         static public int MAP_3D_WIDTH; // ширина 3d карты
         static public int MAP_3D_HEIGHT; // высота 3d карты
@@ -39,7 +38,7 @@ namespace RayCastingCSHARP
         static public Pen green_pen; // ручка зеленый 1
         static public Pen black_pen = new Pen(Color.Black, 1);// ручка черный 1
         static public Brush blue_brush = Brushes.Blue;// кисть синяя
-
+        static public Font font = SystemFonts.DefaultFont;
         static public void InitSettings(Panel map_2D_panel, Panel map_3D_panel)
         {
             //-------------------------------2D-------------------------------------
@@ -59,7 +58,7 @@ namespace RayCastingCSHARP
         //RAY CASTING
         FOV = 60;//угол обзора в градусах
         HALF_FOV = FOV / 2; //половина угла обзора
-        NUM_RAYS = 120;//120 //кол-во лучей
+        NUM_RAYS = 60;//120 //кол-во лучей
         MAX_DEPTH = 800;//HEIGHT; //дальность прорисовки
         DELTA_ANGLE = FOV / NUM_RAYS; //угол между лучами
         // FOR 3D

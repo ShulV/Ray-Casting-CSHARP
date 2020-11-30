@@ -68,7 +68,7 @@ namespace RayCastingCSHARP
             draw.drawing_2D_ray(player, gr_2D);
             draw.drawing_3D_background(gr_3D);
             draw.ray_casting(gr_2D, gr_3D, player);
-            draw.drawing_fps(fps_label, GetFps());
+            //draw.drawing_fps(fps_label, GetFps());
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
@@ -80,26 +80,26 @@ namespace RayCastingCSHARP
                 if (Math.Ceiling(player.distance_to_wall) > Settings.PLAYER_SPEED) {
                     player.x += (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
                     player.y += (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
-                    OnMapUpdated();
+                    //OnMapUpdated();
                 }
                 else
                 {
                     //если игрок оказался в стене, вернуть его на назад
                     player.x -= (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
                     player.y -= (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
-                    OnMapUpdated();
+                    //OnMapUpdated();
                 }
                 
             }
             if (e.KeyCode == Keys.Left)
             {
                 player.angle -= Settings.ROTATE_ANGLE;
-                OnMapUpdated();
+                //OnMapUpdated();
             }
             if (e.KeyCode == Keys.Right)
             {
                 player.angle += Settings.ROTATE_ANGLE;
-                OnMapUpdated();
+                //OnMapUpdated();
             }
             playerPos.X = (int)player.x;
             playerPos.Y = (int)player.y;

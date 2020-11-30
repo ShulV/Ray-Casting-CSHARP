@@ -31,6 +31,7 @@
             this.map_3D_panel = new System.Windows.Forms.Panel();
             this.fps_label = new System.Windows.Forms.Label();
             this.map_2D_panel = new System.Windows.Forms.Panel();
+            this.test_label = new System.Windows.Forms.Label();
             this.map_3D_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -38,37 +39,51 @@
             // 
             this.map_3D_panel.BackColor = System.Drawing.SystemColors.Control;
             this.map_3D_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.map_3D_panel.Controls.Add(this.test_label);
             this.map_3D_panel.Controls.Add(this.fps_label);
             this.map_3D_panel.Location = new System.Drawing.Point(0, 0);
             this.map_3D_panel.Margin = new System.Windows.Forms.Padding(0);
             this.map_3D_panel.Name = "map_3D_panel";
-            this.map_3D_panel.Size = new System.Drawing.Size(960, 640);
+            this.map_3D_panel.Size = new System.Drawing.Size(1200, 800);
             this.map_3D_panel.TabIndex = 0;
             // 
             // fps_label
             // 
             this.fps_label.AutoSize = true;
             this.fps_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fps_label.Location = new System.Drawing.Point(3, 0);
+            this.fps_label.Location = new System.Drawing.Point(4, 0);
+            this.fps_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.fps_label.Name = "fps_label";
-            this.fps_label.Size = new System.Drawing.Size(35, 37);
+            this.fps_label.Size = new System.Drawing.Size(42, 46);
             this.fps_label.TabIndex = 2;
             this.fps_label.Text = "0";
+            this.fps_label.Visible = false;
             // 
             // map_2D_panel
             // 
             this.map_2D_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.map_2D_panel.Location = new System.Drawing.Point(0, 512);
+            this.map_2D_panel.Location = new System.Drawing.Point(0, 640);
             this.map_2D_panel.Margin = new System.Windows.Forms.Padding(0);
             this.map_2D_panel.Name = "map_2D_panel";
-            this.map_2D_panel.Size = new System.Drawing.Size(192, 128);
+            this.map_2D_panel.Size = new System.Drawing.Size(240, 160);
             this.map_2D_panel.TabIndex = 1;
+            // 
+            // test_label
+            // 
+            this.test_label.AutoSize = true;
+            this.test_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.test_label.Location = new System.Drawing.Point(943, 28);
+            this.test_label.Name = "test_label";
+            this.test_label.Size = new System.Drawing.Size(43, 25);
+            this.test_label.TabIndex = 3;
+            this.test_label.Text = "test";
+            this.test_label.Visible = false;
             // 
             // GameForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(986, 687);
+            this.ClientSize = new System.Drawing.Size(1232, 859);
             this.Controls.Add(this.map_2D_panel);
             this.Controls.Add(this.map_3D_panel);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -91,5 +106,6 @@
         private System.Windows.Forms.Panel map_3D_panel;
         private System.Windows.Forms.Panel map_2D_panel;
         private System.Windows.Forms.Label fps_label;
+        private System.Windows.Forms.Label test_label;
     }
 }

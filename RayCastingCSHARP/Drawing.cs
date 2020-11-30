@@ -61,18 +61,40 @@ namespace RayCastingCSHARP
             //получение ближайшего слева сверху пересечения вертикалей и горизонаталей
             //от текущей позиции игрока
             int tile = Settings.MAP_TILE;
-            Point point = new Point((int)(a / tile * tile), (int)(b / tile * tile));
+            Point point = new Point((int)(a / tile) * tile, (int)(b / tile) * tile);
+            //возврат координат левой верхней точки квадарата
             return point;
         }
-        /*
+        public Point mappingCenter(double a, double b)
+        {
+            //получение ближайшего слева сверху пересечения вертикалей и горизонаталей
+            //от текущей позиции игрока
+            int tile = Settings.MAP_TILE;
+            Point point = new Point((int)(a / tile) * tile, (int)(b / tile) * tile);
+            point.X += Settings.MAP_TILE / 2;
+            point.Y += Settings.MAP_TILE / 2;
+            //возврат координат центра квадарата
+            return point;
+        }
+
         public void ray_casting(Graphics gr_2D, Graphics gr_3D, Player player)
         {
-            PointF point_0 = new PointF((float)player.x, (float)player.y);
-            double x = 0, y = 0;
-            int dx = 0, dy = 0;
-            double depth = 0, depth_v = 0, depth_h = 0;
-            Point point_m = mapping(player.x, player.y);
+            //PointF player_pos = new PointF((float)player.x, (float)player.y);
+            float ox = (float)player.x;//начальная коорд x
+            float oy = (float)player.y;//начальная коорд y
+            Point point_m = mapping(ox, oy);//ближайшая точка пересечений вертикалей и горизонателей слева сверху
+            float xm = point_m.X;
+            float ym = point_m.Y;
+
+            
+
             double cur_angle = player.angle - Settings.HALF_FOV;
+            double x = 0, y = 0;
+            int dx = 0, dy = 0;//знаки x, y (для определения с какой стороны находится вертикаль)
+            int TILE = Settings.MAP_TILE;//размер квадрата
+            
+            
+            double depth = 0, depth_v = 0, depth_h = 0;
             SolidBrush wall_brush = new SolidBrush(Color.White);
             int rgb_num = 0;
             //проход по всем лучам в цикле
@@ -84,48 +106,55 @@ namespace RayCastingCSHARP
                 //вертикали
                 if (cos_a >= 0)
                 {
-                    x = point_m.X + Settings.MAP_TILE;
+                    
+                    //правая вертикаль
+                    x = xm + TILE;
                     dx = 1;
                 }
                 else
                 {
-                    x = point_m.X;
+                    //левая вертикаль
+                    x = xm;
                     dx = -1;
                 }
-                for(int i=0; i<Settings.WIDTH; i = i + Settings.MAP_TILE)
+                
+
+                for (int i=0; i<Settings.WIDTH; i = i + TILE)
                 {
-                    depth_v = (x - point_0.X) / cos_a;
-                    y = point_0.Y + depth_v * sin_a;
-                    if (Map.pointsCenterSet.Contains(new Point((int)(x + dx), (int)y)))
+                    depth_v = Math.Abs((x - ox) / cos_a);
+                    
+
+                    y = oy + depth_v * sin_a;
+                    if (Map.pointsCenterSet.Contains(mappingCenter((int)(x + dx), (int)y)))
                     {
                         break;
                     }
-                    x += dx * Settings.MAP_TILE;
+                    x += dx * TILE;
                 }
                 //горизонтали
                 if (sin_a >= 0)
                 {
-                    y = point_m.Y + Settings.MAP_TILE;
+                    y = ym + TILE;
                     dy = 1;
                 }
                 else
                 {
-                    y = point_m.Y;
+                    y = ym;
                     dy = -1;
                 }
-                for (int i = 0; i < Settings.HEIGHT; i = i + Settings.MAP_TILE)
+                for (int i = 0; i < Settings.HEIGHT; i = i + TILE)
                 {
-                    depth_h = (y - point_0.Y) / sin_a;
-                    x = point_0.X + depth_h * cos_a;
-                    if (Map.pointsCenterSet.Contains(new Point((int)x, (int)(y+dy))))
+                    depth_h = Math.Abs((y - oy) / sin_a);
+                    x = ox + depth_h * cos_a;
+                    if (Map.pointsCenterSet.Contains(mappingCenter((int)x, (int)(y + dy))))
                     {
                         break;
                     }
-                    y += dy * Settings.MAP_TILE;
+                    y += dy * TILE;
                 }
                 //проецирование
-                if (depth_v < depth_h) depth = depth_v;
-                else depth = depth_h;
+                if (depth_v < depth_h) { depth = depth_v; }
+                else { depth = depth_h; }
 
                 //отрисовка одной прямоугольной части стены
                 Rectangle rect_wall = new Rectangle();
@@ -141,12 +170,29 @@ namespace RayCastingCSHARP
                 gr_3D.DrawRectangle(Pens.Brown, rect_wall);
                 gr_3D.FillRectangle(wall_brush, rect_wall);
 
+                //gr_2D.DrawLine(Pens.Red, (int)point_0.X, (int)point_0.Y, point_m.X, point_m.Y);// рисуем линию
+                
+                //запись расстояния до стены (спереди)
+                if (cur_angle == player.angle)
+                {
+                    float end_x = (float)(player.x + depth * cos_a);
+                    float end_y = (float)(player.y + depth * sin_a);
+                    player.distance_to_wall = MathHelper.vectorLength(new PointF(ox, oy), new PointF(end_x, end_y));
+                    //String str = point_0.X.ToString() + " " + point_0.Y.ToString() + " " + end_x.ToString() + " " + end_y.ToString();
+
+                    //gr_2D.DrawLine(Pens.Red, point_0.X, point_0.Y, end_x, end_y);// рисуем линию
+
+                    //gr_3D.DrawString(str, Settings.font, Brushes.Black, point_0);
+
+                }
+
                 cur_angle += Settings.DELTA_ANGLE;
             }
         }
-        */
-        
-                 public void ray_casting(Graphics gr_2D, Graphics gr_3D, Player player)
+
+
+        /*
+         public void ray_casting2(Graphics gr_2D, Graphics gr_3D, Player player)
         {
             PointF start_point = new PointF((float)player.x, (float)player.y);
             double cur_angle = player.angle - Settings.HALF_FOV;
@@ -203,8 +249,12 @@ namespace RayCastingCSHARP
                 cur_angle += Settings.DELTA_ANGLE;
             }
         }
-         
-        
+         */
+
+
+
+
+
 
 
         public void drawing_fps(Label fps_label, double fps)
