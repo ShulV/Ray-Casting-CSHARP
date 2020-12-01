@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Resources;
 
 namespace RayCastingCSHARP
 {
@@ -24,11 +25,11 @@ namespace RayCastingCSHARP
                 "W..........W",
                 "WWWWWWWWWWWW" };
 
-        static public void ReadWorldMap(int mapNumber)
+        static public void ReadWorldMap(String mapNumber)
         {
-            //string path = Directory.GetCurrentDirectory();
-            String[] textMap = Properties.Resources.map1.Split('\n');
-            for(int i = 0; i < textMap.Length; i++)
+            String fileName = "map" + mapNumber;
+            String[] textMap = ((String)Properties.Resources.ResourceManager.GetObject(fileName)).Split('\n');
+            for (int i = 0; i < textMap.Length; i++)
             {
                 textMap[i] = textMap[i].Trim(new Char[] { ' ', '\n', '\r' });
             }

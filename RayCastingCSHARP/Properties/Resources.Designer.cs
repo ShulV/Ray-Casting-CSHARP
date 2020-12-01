@@ -62,17 +62,97 @@ namespace RayCastingCSHARP.Properties {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на WWWWWWWWWWWW
-        ///W....W.....W
-        ///WW..W.WWWWWW
-        ///W..W.......W
-        ///W........W.W
-        ///WWWWW.WWWW.W
+        ///W..........W
+        ///WW.........W
+        ///W..........W
+        ///W..........W
+        ///W..........W
+        ///W..........W
+        ///WWWWWWWWWWWW.
+        /// </summary>
+        internal static string map0 {
+            get {
+                return ResourceManager.GetString("map0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на WWWWWWWWWWWW
+        ///W..........W
+        ///WW.........W
+        ///W..........W
+        ///W....WWWWWWW
+        ///W..........W
         ///W..........W
         ///WWWWWWWWWWWW.
         /// </summary>
         internal static string map1 {
             get {
                 return ResourceManager.GetString("map1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на WWWWWWWWWWWW
+        ///W..........W
+        ///WW.........W
+        ///W..WWWWWW..W
+        ///W..........W
+        ///W..........W
+        ///W..........W
+        ///WWWWWWWWWWWW.
+        /// </summary>
+        internal static string map2 {
+            get {
+                return ResourceManager.GetString("map2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на WWWWWWWWWWWW
+        ///W..........W
+        ///WW.........W
+        ///W..........W
+        ///W..........W
+        ///WWWWWWWWWWWW
+        ///W..........W
+        ///WWWWWWWWWWWW.
+        /// </summary>
+        internal static string map3 {
+            get {
+                return ResourceManager.GetString("map3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на WWWWWWWWWWWW
+        ///W..........W
+        ///WW.........W
+        ///WWW........W
+        ///WWWW.......W
+        ///W..........W
+        ///W..........W
+        ///WWWWWWWWWWWW.
+        /// </summary>
+        internal static string map4 {
+            get {
+                return ResourceManager.GetString("map4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на WWWWWWWWWWWW
+        ///W..........W
+        ///WW.........W
+        ///WWW........W
+        ///WWWW......WW
+        ///W........WWW
+        ///W.......WWWW
+        ///WWWWWWWWWWWW.
+        /// </summary>
+        internal static string map5 {
+            get {
+                return ResourceManager.GetString("map5", resourceCulture);
             }
         }
         

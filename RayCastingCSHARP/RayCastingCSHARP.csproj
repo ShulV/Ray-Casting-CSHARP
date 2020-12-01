@@ -132,5 +132,32 @@
   <ItemGroup>
     <None Include="Text_maps\map1.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Text_maps\map11.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Text_maps\map111.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Text_maps\map112.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Text_maps\map113.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Text_maps\map0.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Text_maps\map2.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Text_maps\map3.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Text_maps\map4.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Text_maps\map5.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

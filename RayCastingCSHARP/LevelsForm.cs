@@ -61,7 +61,7 @@ namespace RayCastingCSHARP
                 test_label.Text += textMap[i];
             }
             */
-            Map.ReadWorldMap(1);
+            Map.ReadWorldMap(((Button)sender).Text);
             GameForm gameForm = new GameForm();
             gameForm.Show();
             this.Hide();
