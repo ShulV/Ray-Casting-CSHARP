@@ -39,21 +39,23 @@ namespace RayCastingCSHARP
                 lvl_btn[i].Location = new Point(left, top);
                 lvl_btn[i].Size = new Size(50, 50);
                 lvl_btn[i].Text = (i+1).ToString();
-                this.Controls.Add(lvl_btn[i]);
+                lvl_btn[i].Font = new Font("Arial", 20);
+                this.levels_gp.Controls.Add(lvl_btn[i]);
                 left += 100;
                 if (left > this.Size.Width - 2 * lvl_btn[i].Size.Width)
                 {
                     left = 50;
                     top += 100;
                 }
+                lvl_btn[i].Click += lvl_btn_Click;//function
             }
             
             
             
         }
-        private void ButtonOnClick(object sender, EventArgs eventArgs)
+        private void lvl_btn_Click(object sender, EventArgs eventArgs)
         {
-
+            test_label.Text = ((Button)sender).Text;
         }
 
         private void LevelsForm_FormClosed(object sender, FormClosedEventArgs e)
