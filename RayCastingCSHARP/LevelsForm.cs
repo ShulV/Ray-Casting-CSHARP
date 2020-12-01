@@ -34,8 +34,6 @@ namespace RayCastingCSHARP
             for (int i = 0; i < Settings.MAP_QUANTITY; i++)
             {
                 lvl_btn[i] = new Button();
-                //lvl_btn[i].Left = left;
-                //lvl_btn[i].Top = top;
                 lvl_btn[i].Location = new Point(left, top);
                 lvl_btn[i].Size = new Size(50, 50);
                 lvl_btn[i].Text = (i+1).ToString();
@@ -55,7 +53,19 @@ namespace RayCastingCSHARP
         }
         private void lvl_btn_Click(object sender, EventArgs eventArgs)
         {
+            /*
             test_label.Text = ((Button)sender).Text;
+            String[] textMap = map.ReadWorldMap(1);
+            for (int i=0; i<Settings.HEIGHT_BLOCKS; i++)
+            {
+                test_label.Text += textMap[i];
+            }
+            */
+            Map.ReadWorldMap(1);
+            GameForm gameForm = new GameForm();
+            gameForm.Show();
+            this.Hide();
+
         }
 
         private void LevelsForm_FormClosed(object sender, FormClosedEventArgs e)

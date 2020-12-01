@@ -13,7 +13,6 @@ namespace RayCastingCSHARP
 {
     public partial class GameForm : Form
     {
-        Map map_2D;
         Drawing draw;
         Player player;
         Point playerPos;
@@ -37,8 +36,8 @@ namespace RayCastingCSHARP
             //создание рисовалки
             draw = new Drawing();
             //карта 2D
-            map_2D = new Map();
-            map_2D.fillPointsSet();
+            //map_2D = new Map();
+            Map.fillPointsSet();
             //создание игрока
             CreatePlayer();
             playerPos = new Point((int)player.x, (int)player.y);
@@ -63,7 +62,7 @@ namespace RayCastingCSHARP
         public void maps_refresh(Graphics gr_2D, Graphics gr_3D)
         {
             draw.drawing_2D_background(gr_2D);
-            draw.drawing_2D_map(map_2D, gr_2D);
+            draw.drawing_2D_map(gr_2D);
             draw.drawing_2D_ray(player, gr_2D);
             draw.drawing_3D_background(gr_3D);
             draw.ray_casting(gr_2D, gr_3D, player);
@@ -122,6 +121,7 @@ namespace RayCastingCSHARP
 
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Application.Exit();
         }
 
         private void GameForm_Shown(object sender, EventArgs e)

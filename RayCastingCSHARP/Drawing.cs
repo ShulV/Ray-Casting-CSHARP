@@ -15,10 +15,10 @@ namespace RayCastingCSHARP
         {
 
         }
-        public void drawing_2D_map(Map map, Graphics graphics)
+        public void drawing_2D_map(Graphics graphics)
         {
             //отрисовка квадратов на 2D карте
-            for (int i = 0; i < map.countPoints; i++)
+            for (int i = 0; i < Map.countPoints; i++)
             {
                 Rectangle rect = new Rectangle(Map.pointsSet[i].X/Settings.SCALE_FACTOR, Map.pointsSet[i].Y / Settings.SCALE_FACTOR, Settings.MAP_TILE / Settings.SCALE_FACTOR, Settings.MAP_TILE / Settings.SCALE_FACTOR);
                 Pen pen = new Pen(Color.Azure, 2f);

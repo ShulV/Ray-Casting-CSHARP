@@ -31,6 +31,9 @@ namespace RayCastingCSHARP
         {
             //настройки
             Settings.InitSettings();
+
+            
+            
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

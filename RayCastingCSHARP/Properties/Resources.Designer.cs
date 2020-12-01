@@ -61,6 +61,22 @@ namespace RayCastingCSHARP.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на WWWWWWWWWWWW
+        ///W....W.....W
+        ///WW..W.WWWWWW
+        ///W..W.......W
+        ///W........W.W
+        ///WWWWW.WWWW.W
+        ///W..........W
+        ///WWWWWWWWWWWW.
+        /// </summary>
+        internal static string map1 {
+            get {
+                return ResourceManager.GetString("map1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap smile {

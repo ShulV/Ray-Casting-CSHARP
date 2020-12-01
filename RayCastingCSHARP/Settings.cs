@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace RayCastingCSHARP
 {
-    public class Settings
+    static public class Settings
     {
         //-------------------------------2D-------------------------------------
         static public int WIDTH; //ширина панели миникарты
