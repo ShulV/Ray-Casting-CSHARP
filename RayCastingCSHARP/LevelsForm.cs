@@ -21,7 +21,44 @@ namespace RayCastingCSHARP
         {
             MainForm mainForm = new MainForm();
             mainForm.Show();
-            this.Close();
+            this.Hide();
+        }
+
+        private void LevelsForm_Load(object sender, EventArgs e)
+        {
+            //создание кнопок
+            
+            int top = 50;
+            int left = 50;
+            Button[] lvl_btn = new Button[Settings.MAP_QUANTITY];
+            for (int i = 0; i < Settings.MAP_QUANTITY; i++)
+            {
+                lvl_btn[i] = new Button();
+                //lvl_btn[i].Left = left;
+                //lvl_btn[i].Top = top;
+                lvl_btn[i].Location = new Point(left, top);
+                lvl_btn[i].Size = new Size(50, 50);
+                lvl_btn[i].Text = (i+1).ToString();
+                this.Controls.Add(lvl_btn[i]);
+                left += 100;
+                if (left > this.Size.Width - 2 * lvl_btn[i].Size.Width)
+                {
+                    left = 50;
+                    top += 100;
+                }
+            }
+            
+            
+            
+        }
+        private void ButtonOnClick(object sender, EventArgs eventArgs)
+        {
+
+        }
+
+        private void LevelsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

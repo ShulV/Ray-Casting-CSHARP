@@ -35,11 +35,13 @@ namespace RayCastingCSHARP
         static public double PROJ_COEFF; //коэффициент проекции
         static public int SCALE; //масштабирующий коэф
 
+        static public int MAP_QUANTITY; //количество карт
+
         static public Pen green_pen; // ручка зеленый 1
         static public Pen black_pen = new Pen(Color.Black, 1);// ручка черный 1
         static public Brush blue_brush = Brushes.Blue;// кисть синяя
         static public Font font = SystemFonts.DefaultFont;
-        static public void InitSettings(Panel map_2D_panel, Panel map_3D_panel)
+        static public void InitSettings()
         {
             //-------------------------------2D-------------------------------------
         WIDTH = 1200; //ширина панели миникарты
@@ -65,6 +67,7 @@ namespace RayCastingCSHARP
         DIST = NUM_RAYS/(2*Math.Tan(Settings.HALF_FOV * Math.PI / 180.0)); //расстояние от игрока до стены (расстояние до экрана)
         PROJ_COEFF = 3* DIST * Settings.MAP_TILE; //коэффициент проекции
         SCALE = (int)(Settings.MAP_3D_WIDTH / Settings.NUM_RAYS); //масштабирующий коэф
+        MAP_QUANTITY = 5; //количество карт
         }
         
     }

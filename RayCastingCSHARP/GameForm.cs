@@ -33,8 +33,7 @@ namespace RayCastingCSHARP
 
         private void GameForm_Load(object sender, EventArgs e)
         {
-            //настройки
-            Settings.InitSettings(map_2D_panel, map_3D_panel);
+            
             //создание рисовалки
             draw = new Drawing();
             //карта 2D

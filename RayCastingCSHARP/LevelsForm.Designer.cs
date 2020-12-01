@@ -49,6 +49,8 @@
             this.Controls.Add(this.btn_cancel);
             this.Name = "LevelsForm";
             this.Text = "LevelsForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LevelsForm_FormClosed);
+            this.Load += new System.EventHandler(this.LevelsForm_Load);
             this.ResumeLayout(false);
 
         }
