@@ -21,8 +21,8 @@ namespace RayCastingCSHARP
 
         private void btn_play_Click(object sender, EventArgs e)
         {
-            GameForm gameForm = new GameForm();
-            gameForm.Show();
+            LevelsForm levelsForm = new LevelsForm();
+            levelsForm.Show();
             this.Hide();
 
         }

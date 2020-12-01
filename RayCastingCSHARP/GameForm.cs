@@ -73,33 +73,44 @@ namespace RayCastingCSHARP
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {
-            //label1.Text = "до стены: " + Math.Ceiling(player.distance_to_wall).ToString() + "\tскорость: " + Settings.PLAYER_SPEED + ";";
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Выдействительно хотите вернуться в главную форму?",
+                    "Предупреждение",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.Yes)
+                {
+                    MainForm mainForm = new MainForm();
+                    mainForm.Show();
+                    this.Close();
+                }
+            }
             if (e.KeyCode == Keys.W)
             {
                 
                 if (Math.Ceiling(player.distance_to_wall) > Settings.PLAYER_SPEED) {
                     player.x += (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
                     player.y += (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
-                    //OnMapUpdated();
                 }
                 else
                 {
                     //если игрок оказался в стене, вернуть его на назад
                     player.x -= (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
                     player.y -= (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
-                    //OnMapUpdated();
                 }
                 
             }
             if (e.KeyCode == Keys.Left)
             {
                 player.angle -= Settings.ROTATE_ANGLE;
-                //OnMapUpdated();
             }
             if (e.KeyCode == Keys.Right)
             {
                 player.angle += Settings.ROTATE_ANGLE;
-                //OnMapUpdated();
             }
             playerPos.X = (int)player.x;
             playerPos.Y = (int)player.y;
@@ -108,14 +119,10 @@ namespace RayCastingCSHARP
 
 
             maps_refresh(map_2D_panel_graphics, map_3D_panel_graphics);
-
-            //Invalidate();//перерисовка
-            
         }
 
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
         }
 
         private void GameForm_Shown(object sender, EventArgs e)
