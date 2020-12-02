@@ -56,7 +56,7 @@ namespace RayCastingCSHARP
 
         public void CreatePlayer()
         {
-            player = new Player((int)Settings.WIDTH/2, (int)Settings.HEIGHT/2, 0);
+            player = new Player((double)Settings.MAP_TILE * 1.5, (double)Settings.MAP_TILE * 1.5, 0);
         }
 
         public void maps_refresh(Graphics gr_2D, Graphics gr_3D)
