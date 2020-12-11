@@ -84,7 +84,7 @@ namespace RayCastingCSHARP
                 {
                     MainForm mainForm = new MainForm();
                     mainForm.Show();
-                    this.Close();
+                    this.Hide();
                 }
             }
             if (e.KeyCode == Keys.W)
@@ -119,7 +119,25 @@ namespace RayCastingCSHARP
 
             double cur_angle = player.angle - Settings.HALF_FOV;
 
-
+            //проверка выхода из лабиринта
+            if (playerPos.X > Settings.MAP_3D_WIDTH ||
+                playerPos.X < 0 ||
+                playerPos.Y > Settings.MAP_3D_HEIGHT ||
+                playerPos.Y < 0)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Вы прошли уровень!",
+                    "Поздравляем!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Asterisk,
+                    MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.OK)
+                {
+                    MainForm mainForm = new MainForm();
+                    mainForm.Show();
+                    this.Hide();
+                }
+            }
             
         }
 
