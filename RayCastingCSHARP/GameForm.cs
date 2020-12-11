@@ -93,22 +93,26 @@ namespace RayCastingCSHARP
                 if (Math.Ceiling(player.distance_to_wall) > Settings.PLAYER_SPEED) {
                     player.x += (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
                     player.y += (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
+                    maps_refresh(map_2D_panel_graphics, map_3D_panel_graphics);
                 }
                 else
                 {
                     //если игрок оказался в стене, вернуть его на назад
                     player.x -= (float)(Settings.PLAYER_SPEED * Math.Cos((double)(player.angle * Math.PI / 180.0)));
                     player.y -= (float)(Settings.PLAYER_SPEED * Math.Sin((double)(player.angle * Math.PI / 180.0)));
+                    maps_refresh(map_2D_panel_graphics, map_3D_panel_graphics);
                 }
                 
             }
             if (e.KeyCode == Keys.Left)
             {
                 player.angle -= Settings.ROTATE_ANGLE;
+                maps_refresh(map_2D_panel_graphics, map_3D_panel_graphics);
             }
             if (e.KeyCode == Keys.Right)
             {
                 player.angle += Settings.ROTATE_ANGLE;
+                maps_refresh(map_2D_panel_graphics, map_3D_panel_graphics);
             }
             playerPos.X = (int)player.x;
             playerPos.Y = (int)player.y;
@@ -116,7 +120,7 @@ namespace RayCastingCSHARP
             double cur_angle = player.angle - Settings.HALF_FOV;
 
 
-            maps_refresh(map_2D_panel_graphics, map_3D_panel_graphics);
+            
         }
 
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
