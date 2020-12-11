@@ -16,14 +16,14 @@ namespace RayCastingCSHARP
         static public int countPoints;//количетсво точек, являющихся верхними левым углами квадратов, из которых состоит карта
         static public int countCenterPoints;//кол-во точек, являющихся центрами квадратов, из которых состоит карта
         static public String[] worldMap = {
-                "WWWWWWWWWWWW",
-                "W....W.....W",
-                "WW....WWWWWW",
-                "W..........W",
-                "W..........W",
-                "W..........W",
-                "W..........W",
-                "WWWWWWWWWWWW" };
+                "............",
+                "............",
+                "............",
+                "............",
+                "............",
+                "............",
+                "............",
+                "............" };
 
         static public void ReadWorldMap(String mapNumber)
         {
@@ -37,6 +37,9 @@ namespace RayCastingCSHARP
         }
         static public void fillPointsSet()
         {
+            //очиска массивов перед заполнением
+            Array.Clear(pointsSet, 0, pointsSet.Length);
+            Array.Clear(pointsCenterSet, 0, pointsCenterSet.Length);
             countPoints = 0;
             countCenterPoints = 0;
             for (int n = 0; n < Settings.HEIGHT_BLOCKS; n++)

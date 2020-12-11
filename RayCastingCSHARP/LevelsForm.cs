@@ -64,6 +64,7 @@ namespace RayCastingCSHARP
             string mapNumber = ((Button)sender).Text;
             Settings.current_level = int.Parse(mapNumber);
             Map.ReadWorldMap(mapNumber);
+            Map.fillPointsSet();
             GameForm gameForm = new GameForm();
             gameForm.Show();
             this.Hide();

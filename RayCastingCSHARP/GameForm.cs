@@ -37,7 +37,6 @@ namespace RayCastingCSHARP
             draw = new Drawing();
             //карта 2D
             //map_2D = new Map();
-            Map.fillPointsSet();
             //создание игрока
             CreatePlayer();
             playerPos = new Point((int)player.x, (int)player.y);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LevelsForm));
             this.btn_cancel = new System.Windows.Forms.Button();
             this.levels_gp = new System.Windows.Forms.GroupBox();
             this.levels_gp.SuspendLayout();
@@ -44,7 +45,7 @@
             this.btn_cancel.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
             this.btn_cancel.Location = new System.Drawing.Point(892, 474);
-            this.btn_cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_cancel.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(143, 49);
             this.btn_cancel.TabIndex = 0;
@@ -62,9 +63,9 @@
             this.levels_gp.Font = new System.Drawing.Font("Arial", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.levels_gp.ForeColor = System.Drawing.Color.SeaShell;
             this.levels_gp.Location = new System.Drawing.Point(0, 0);
-            this.levels_gp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.levels_gp.Margin = new System.Windows.Forms.Padding(4);
             this.levels_gp.Name = "levels_gp";
-            this.levels_gp.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.levels_gp.Padding = new System.Windows.Forms.Padding(4);
             this.levels_gp.Size = new System.Drawing.Size(1067, 554);
             this.levels_gp.TabIndex = 1;
             this.levels_gp.TabStop = false;
@@ -76,9 +77,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.levels_gp);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LevelsForm";
-            this.Text = "LevelsForm";
+            this.Text = "Игра \"Лабиринт\"";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LevelsForm_FormClosed);
             this.Load += new System.EventHandler(this.LevelsForm_Load);
             this.levels_gp.ResumeLayout(false);
