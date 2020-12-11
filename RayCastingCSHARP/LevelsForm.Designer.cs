@@ -30,7 +30,6 @@
         {
             this.btn_cancel = new System.Windows.Forms.Button();
             this.levels_gp = new System.Windows.Forms.GroupBox();
-            this.test_label = new System.Windows.Forms.Label();
             this.levels_gp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +56,6 @@
             // 
             this.levels_gp.BackColor = System.Drawing.SystemColors.MenuBar;
             this.levels_gp.BackgroundImage = global::RayCastingCSHARP.Properties.Resources.green_maze_bg;
-            this.levels_gp.Controls.Add(this.test_label);
             this.levels_gp.Controls.Add(this.btn_cancel);
             this.levels_gp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.levels_gp.Location = new System.Drawing.Point(0, 0);
@@ -68,16 +66,6 @@
             this.levels_gp.TabIndex = 1;
             this.levels_gp.TabStop = false;
             this.levels_gp.Text = "Уровни";
-            // 
-            // test_label
-            // 
-            this.test_label.AutoSize = true;
-            this.test_label.Location = new System.Drawing.Point(37, 322);
-            this.test_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.test_label.Name = "test_label";
-            this.test_label.Size = new System.Drawing.Size(31, 17);
-            this.test_label.TabIndex = 1;
-            this.test_label.Text = "test";
             // 
             // LevelsForm
             // 
@@ -91,7 +79,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LevelsForm_FormClosed);
             this.Load += new System.EventHandler(this.LevelsForm_Load);
             this.levels_gp.ResumeLayout(false);
-            this.levels_gp.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -100,6 +87,5 @@
 
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.GroupBox levels_gp;
-        private System.Windows.Forms.Label test_label;
     }
 }

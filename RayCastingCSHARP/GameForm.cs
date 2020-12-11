@@ -125,7 +125,7 @@ namespace RayCastingCSHARP
                 playerPos.Y > Settings.MAP_3D_HEIGHT ||
                 playerPos.Y < 0)
             {
-                Settings.passed_levels[Settings.current_level] = true;
+                Settings.passed_levels[Settings.current_level-1] = true;
                 DialogResult result = MessageBox.Show(
                     "Вы прошли " + Settings.current_level.ToString() + " уровень!",
                     "Поздравляем!",
