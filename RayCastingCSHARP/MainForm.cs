@@ -29,8 +29,7 @@ namespace RayCastingCSHARP
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //настройки
-            Settings.InitSettings();
+           
 
             
             

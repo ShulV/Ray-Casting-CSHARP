@@ -16,6 +16,8 @@ namespace RayCastingCSHARP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //настройки
+            Settings.InitSettings();
             Application.Run(new MainForm());
         }
     }
