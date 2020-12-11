@@ -37,22 +37,34 @@
             // btn_cancel
             // 
             this.btn_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_cancel.Location = new System.Drawing.Point(701, 402);
+            this.btn_cancel.BackColor = System.Drawing.Color.Sienna;
+            this.btn_cancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_cancel.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.btn_cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Peru;
+            this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cancel.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_cancel.ForeColor = System.Drawing.Color.White;
+            this.btn_cancel.Location = new System.Drawing.Point(892, 474);
+            this.btn_cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.Size = new System.Drawing.Size(143, 49);
             this.btn_cancel.TabIndex = 0;
             this.btn_cancel.Text = "Назад";
-            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.UseVisualStyleBackColor = false;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // levels_gp
             // 
+            this.levels_gp.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.levels_gp.BackgroundImage = global::RayCastingCSHARP.Properties.Resources.green_maze_bg;
             this.levels_gp.Controls.Add(this.test_label);
             this.levels_gp.Controls.Add(this.btn_cancel);
             this.levels_gp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.levels_gp.Location = new System.Drawing.Point(0, 0);
+            this.levels_gp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.levels_gp.Name = "levels_gp";
-            this.levels_gp.Size = new System.Drawing.Size(800, 450);
+            this.levels_gp.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.levels_gp.Size = new System.Drawing.Size(1067, 554);
             this.levels_gp.TabIndex = 1;
             this.levels_gp.TabStop = false;
             this.levels_gp.Text = "Уровни";
@@ -60,18 +72,20 @@
             // test_label
             // 
             this.test_label.AutoSize = true;
-            this.test_label.Location = new System.Drawing.Point(28, 262);
+            this.test_label.Location = new System.Drawing.Point(37, 322);
+            this.test_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.test_label.Name = "test_label";
-            this.test_label.Size = new System.Drawing.Size(24, 13);
+            this.test_label.Size = new System.Drawing.Size(31, 17);
             this.test_label.TabIndex = 1;
             this.test_label.Text = "test";
             // 
             // LevelsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.levels_gp);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "LevelsForm";
             this.Text = "LevelsForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LevelsForm_FormClosed);

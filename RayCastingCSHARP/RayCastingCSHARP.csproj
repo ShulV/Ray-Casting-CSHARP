@@ -159,5 +159,14 @@
   <ItemGroup>
     <None Include="Text_maps\map5.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\green_maze_background.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\14937969975909888568d073.69905096.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\green_maze_bg.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

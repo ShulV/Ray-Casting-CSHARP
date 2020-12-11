@@ -75,7 +75,7 @@ namespace RayCastingCSHARP
             if (e.KeyCode == Keys.Escape)
             {
                 DialogResult result = MessageBox.Show(
-                    "Выдействительно хотите вернуться в главную форму?",
+                    "Вы действительно хотите вернуться в главную форму?",
                     "Предупреждение",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question,
@@ -125,13 +125,20 @@ namespace RayCastingCSHARP
                 playerPos.Y > Settings.MAP_3D_HEIGHT ||
                 playerPos.Y < 0)
             {
+                Settings.passed_levels[Settings.current_level] = true;
                 DialogResult result = MessageBox.Show(
-                    "Вы прошли уровень!",
+                    "Вы прошли " + Settings.current_level.ToString() + " уровень!",
                     "Поздравляем!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk,
                     MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.OK)
+                {
+                    LevelsForm levelsForm = new LevelsForm();
+                    levelsForm.Show();
+                    this.Hide();
+                }
+                else
                 {
                     MainForm mainForm = new MainForm();
                     mainForm.Show();

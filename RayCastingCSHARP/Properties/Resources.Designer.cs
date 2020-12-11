@@ -61,14 +61,24 @@ namespace RayCastingCSHARP.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap green_maze_bg {
+            get {
+                object obj = ResourceManager.GetObject("green_maze_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на WWWWWWWWWWWW
         ///W..........W
-        ///WW.........W
         ///W..........W
         ///W..........W
         ///W..........W
         ///W..........W
-        ///WWWWWWWWWWWW.
+        ///W..........W
+        ///WWWWWW.WWWWW.
         /// </summary>
         internal static string map0 {
             get {
@@ -77,14 +87,14 @@ namespace RayCastingCSHARP.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на WWWWWWWWWWWW
+        ///   Ищет локализованную строку, похожую на WWW.WWWWWWWW
         ///W..........W
-        ///WW.........W
-        ///W..........W
-        ///W....WWWWWWW
-        ///W..........W
-        ///W..........W
-        ///WWWWWWWWWWWW.
+        ///WWWWWWWWWW.W
+        ///W........W.W
+        ///W........W.W
+        ///W........W.W
+        ///W........W.W
+        ///WWWWWWWWWW.W.
         /// </summary>
         internal static string map1 {
             get {
@@ -95,12 +105,12 @@ namespace RayCastingCSHARP.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на WWWWWWWWWWWW
         ///W..........W
-        ///WW.........W
-        ///W..WWWWWW..W
-        ///W..........W
-        ///W..........W
-        ///W..........W
-        ///WWWWWWWWWWWW.
+        ///WWW.WWWWWW.W
+        ///W...W......W
+        ///W.WWWWWWWWWW
+        ///W.WW...WWWWW
+        ///W....W.....W
+        ///WWWWWWWWWW.W.
         /// </summary>
         internal static string map2 {
             get {
@@ -111,12 +121,12 @@ namespace RayCastingCSHARP.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на WWWWWWWWWWWW
         ///W..........W
-        ///WW.........W
+        ///WW.W.W.W.W.W
         ///W..........W
+        ///WW.W.W.W.W.W
         ///W..........W
-        ///WWWWWWWWWWWW
-        ///W..........W
-        ///WWWWWWWWWWWW.
+        ///WW.W.W.W.W.W
+        ///WWWWWWWW.WWW.
         /// </summary>
         internal static string map3 {
             get {
@@ -126,13 +136,13 @@ namespace RayCastingCSHARP.Properties {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на WWWWWWWWWWWW
-        ///W..........W
-        ///WW.........W
-        ///WWW........W
-        ///WWWW.......W
-        ///W..........W
-        ///W..........W
-        ///WWWWWWWWWWWW.
+        ///W......W...W
+        ///WWW.W......W
+        ///WWW...WWWW.W
+        ///WWW.W......W
+        ///WWW..WWW.WWW
+        ///WWWWWWW....W
+        ///WWWWWWWW.WWW.
         /// </summary>
         internal static string map4 {
             get {
@@ -142,13 +152,13 @@ namespace RayCastingCSHARP.Properties {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на WWWWWWWWWWWW
-        ///W..........W
-        ///WW.........W
-        ///WWW........W
-        ///WWWW......WW
-        ///W........WWW
-        ///W.......WWWW
-        ///WWWWWWWWWWWW.
+        ///W..W...W...W
+        ///W....W...W.W
+        ///WW.W..W..W.W
+        ///W...W.W..W.W
+        ///W.W.W.W..W.W
+        ///W...W..W.W.W
+        ///WWWWWW.WWWWW.
         /// </summary>
         internal static string map5 {
             get {
