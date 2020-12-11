@@ -54,10 +54,13 @@
             // 
             // levels_gp
             // 
-            this.levels_gp.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.levels_gp.BackColor = System.Drawing.SystemColors.Desktop;
             this.levels_gp.BackgroundImage = global::RayCastingCSHARP.Properties.Resources.green_maze_bg;
             this.levels_gp.Controls.Add(this.btn_cancel);
+            this.levels_gp.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.levels_gp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.levels_gp.Font = new System.Drawing.Font("Arial", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.levels_gp.ForeColor = System.Drawing.Color.SeaShell;
             this.levels_gp.Location = new System.Drawing.Point(0, 0);
             this.levels_gp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.levels_gp.Name = "levels_gp";
