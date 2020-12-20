@@ -20,9 +20,6 @@ namespace RayCastingCSHARP
         Graphics map_3D_panel_graphics;
         //Graphics game_form_graphics;
 
-        DateTime _lastCheckTime = DateTime.Now; //последнее проверенное время
-        long _frameCount = 0;
-
         public GameForm()
         {
             InitializeComponent();
@@ -35,9 +32,6 @@ namespace RayCastingCSHARP
             
             //создание рисовалки
             draw = new Drawing();
-            //карта 2D
-            //map_2D = new Map();
-            //создание игрока
             CreatePlayer();
             playerPos = new Point((int)player.x, (int)player.y);
             //панель для 2D карты
@@ -49,8 +43,6 @@ namespace RayCastingCSHARP
             //графика для панелей (нужна для рисования)
             map_2D_panel_graphics = map_2D_panel.CreateGraphics();
             map_3D_panel_graphics = map_3D_panel.CreateGraphics();
-
-            //game_form_graphics = this.CreateGraphics();
         }
 
         public void CreatePlayer()
@@ -65,7 +57,6 @@ namespace RayCastingCSHARP
             draw.drawing_2D_ray(player, gr_2D);
             draw.drawing_3D_background(gr_3D);
             draw.ray_casting(gr_2D, gr_3D, player);
-            //draw.drawing_fps(fps_label, GetFps());
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
@@ -74,15 +65,15 @@ namespace RayCastingCSHARP
             if (e.KeyCode == Keys.Escape)
             {
                 DialogResult result = MessageBox.Show(
-                    "Вы действительно хотите вернуться в главную форму?",
+                    "Вы действительно хотите вернуться?",
                     "Предупреждение",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question,
                     MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.Yes)
                 {
-                    MainForm mainForm = new MainForm();
-                    mainForm.Show();
+                    LevelsForm levelsForm = new LevelsForm();
+                    levelsForm.Show();
                     this.Hide();
                 }
             }
@@ -131,18 +122,10 @@ namespace RayCastingCSHARP
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk,
                     MessageBoxDefaultButton.Button1);
-                if (result == DialogResult.OK)
-                {
+
                     LevelsForm levelsForm = new LevelsForm();
                     levelsForm.Show();
                     this.Hide();
-                }
-                else
-                {
-                    MainForm mainForm = new MainForm();
-                    mainForm.Show();
-                    this.Hide();
-                }
             }
             
         }
@@ -156,25 +139,6 @@ namespace RayCastingCSHARP
         {
             maps_refresh(map_2D_panel_graphics, map_3D_panel_graphics);
         }
-        
-
-        
-        void OnMapUpdated()
-        //вызывать, когда карта обновляется
-        {
-
-            Interlocked.Increment(ref _frameCount);
-        }
-
-        
-        double GetFps()
-        {
-            // вызывать постоянно (в цикле)
-            double secondsElapsed = (DateTime.Now - _lastCheckTime).TotalSeconds;
-            long count = Interlocked.Exchange(ref _frameCount, 0);
-            double fps = count / secondsElapsed;
-            _lastCheckTime = DateTime.Now;
-            return fps;
-        }
+ 
     }
 }

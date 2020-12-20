@@ -16,12 +16,5 @@ namespace RayCastingCSHARP
             float dL = (float)Math.Sqrt(dx * dx + dy * dy);
             return dL;
         }
-        static public int vectorLength(Point a, Point b)
-        {
-            int dx = Math.Abs(a.X) - Math.Abs(b.X);
-            int dy = Math.Abs(a.Y) - Math.Abs(b.Y);
-            int dL = (int)Math.Sqrt(dx * dx + dy * dy);
-            return dL;
-        }
     }
 }

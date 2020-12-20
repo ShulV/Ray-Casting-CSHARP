@@ -9,7 +9,7 @@ using System.Resources;
 
 namespace RayCastingCSHARP
 {
-    static public class Map
+    public class Map
     {
         static public Point[] pointsSet = new Point[Settings.WIDTH_BLOCKS * Settings.HEIGHT_BLOCKS];//массив точек, являющихся верхними левым углами квадратов, из которых состоит карта
         static public Point[] pointsCenterSet = new Point[Settings.WIDTH_BLOCKS * Settings.HEIGHT_BLOCKS];//массив точек, являющихся центрами квадратов, из которых состоит карта
