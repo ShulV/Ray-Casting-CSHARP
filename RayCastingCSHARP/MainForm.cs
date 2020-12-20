@@ -39,5 +39,20 @@ namespace RayCastingCSHARP
         {
             Application.Exit();
         }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            String about_text = "Программа представляет собой игру 'Лабиринт', состоящую из 5 уровней.\n" +
+                     "Управление осуществляется с помощью клавиш W (движение вперёд) и стрелок влево и вправо (для поворота).\n" +
+                     "Уровень считается пройденным, если игрок вышел за пределы лабиринта\n" +
+                     "В данной версии игры не предусмотрено сохранение данных, если вы выйдете, прогресс обнулится.";
+            DialogResult result = MessageBox.Show(
+                   about_text,
+                   "Справка",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Information
+                   );
+        }
     }
 }
