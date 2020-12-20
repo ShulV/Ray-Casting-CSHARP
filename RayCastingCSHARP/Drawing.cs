@@ -21,7 +21,7 @@ namespace RayCastingCSHARP
             for (int i = 0; i < Map.countPoints; i++)
             {
                 Rectangle rect = new Rectangle(Map.pointsSet[i].X/Settings.SCALE_FACTOR, Map.pointsSet[i].Y / Settings.SCALE_FACTOR, Settings.MAP_TILE / Settings.SCALE_FACTOR, Settings.MAP_TILE / Settings.SCALE_FACTOR);
-                Pen pen = new Pen(Color.Azure, 2f);
+                Pen pen = new Pen(Color.Blue, 2f);
                 graphics.DrawRectangle(pen, rect);
                 graphics.FillRectangle(Brushes.Blue, rect);
             }
@@ -164,7 +164,7 @@ namespace RayCastingCSHARP
                 rect_wall.Width = Settings.SCALE;
                 rect_wall.Height = (int)proj_height;
                 //изменение цвета относительно расстояния до стены
-                rgb_num = (int)(255 / (1 + (int)depth * (int)depth * 0.00003));
+                rgb_num = (int)(255 / (1 + (int)depth * (int)depth * 0.00002));
                 wall_brush.Color = Color.FromArgb((int)(rgb_num / 2), rgb_num, (int)(rgb_num / 3));
                 //
                 gr_3D.DrawRectangle(Pens.Brown, rect_wall);
